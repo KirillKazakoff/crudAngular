@@ -1,0 +1,80 @@
+{
+    "root": true,
+    "ignorePatterns": [
+        "projects/**/*"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ],
+            "parserOptions": {
+                "project": [
+                    "tsconfig.json"
+                ],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates",
+                "airbnb-base",
+                "airbnb-typescript/base"
+            ],
+            "rules": {
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "app",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "style": "camelCase"
+                    }
+                ],
+                "jsx-quotes": [
+                    "error",
+                    "prefer-single"
+                ],
+                "@typescript-eslint/no-unused-vars": "warn",
+                "@typescript-eslint/no-explicit-any": "off",
+                "no-unused-vars": "off",
+                "no-alert": "off",
+                "no-multiple-empty-lines": "warn",
+                "quote-props": "off",
+                "no-continue": "off",
+                "camelcase": "off",
+                "indent": [
+                    0
+                ],
+                "@typescript-eslint/naming-convention": "off",
+                "@typescript-eslint/indent": [
+                    "error",
+                    4
+                ],
+                "import/extensions": [
+                    0
+                ],
+                "arrow-body-style": [
+                    0
+                ],
+                "import/prefer-default-export": 0,
+                "@typescript-eslint/lines-between-class-members": 0,
+                "@angular-eslint/component-class-suffix": 0
+            }
+        },
+        {
+            "files": [
+                "*.html"
+            ],
+            "extends": [
+                "plugin:@angular-eslint/template/recommended"
+            ],
+            "rules": {}
+        }
+    ]
+}
