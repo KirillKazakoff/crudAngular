@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './services/api.service';
+import { ApiService } from './api/api.service';
 import { AppComponent } from './app.component';
 
 @NgModule({
