@@ -4,26 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app';
-import { ItemComponent } from './item/item';
-import { FiltrationComponent } from './filtration/filtration.component';
-import { HeaderComponent } from './header/header';
-import { ItemNonActive } from './item/itemNonActive';
-import { ItemCheckbox } from './item/itemCheckbox';
-import { ItemActive } from './item/itemActive';
-import { MainService } from './services/main.service';
+import { ApiService } from './services/api.service';
+import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        // item
-        ItemComponent,
-        ItemCheckbox,
-        ItemNonActive,
-        ItemActive,
-
-        FiltrationComponent,
-        HeaderComponent,
     ],
     imports: [
         BrowserModule,
@@ -31,7 +17,7 @@ import { MainService } from './services/main.service';
         HttpClientModule,
     ],
     providers: [
-        MainService,
+        ApiService,
     ],
     bootstrap: [AppComponent],
 })
