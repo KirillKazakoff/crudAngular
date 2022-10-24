@@ -1,11 +1,11 @@
 import {
-    Component, Input, Output, EventEmitter,
+    Component, Input,
 } from '@angular/core';
 
 @Component({
     selector: 'app-header',
     template: `
-    <app-filtration (filterItems)="filterItems.emit($event)"></app-filtration>
+    <ng-content></ng-content>
     <h2>
         <span>{{ length }}</span>
         <ng-template #one>item</ng-template>
@@ -16,5 +16,4 @@ import {
 
 export class HeaderComponent {
     @Input() length!: number;
-    @Output() filterItems = new EventEmitter<string>();
 }

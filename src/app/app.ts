@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component,
+    OnInit,
+} from '@angular/core';
 import { ItemT } from './types';
 import { MainService } from './services/main.service';
 
@@ -6,9 +9,11 @@ import { MainService } from './services/main.service';
     selector: 'app-root',
     template: `
         <app-header
-            (filterItems)="filterItems($event)"
+            #header
             [length]="items.length"
-        ></app-header>
+        >
+        <app-filtration (filterItems)="filterItems($event)"></app-filtration>
+        </app-header>
     `,
 })
 export class AppComponent implements OnInit {
