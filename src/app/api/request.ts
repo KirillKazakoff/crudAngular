@@ -1,6 +1,8 @@
 import { RequestObj } from '../types.type';
 
-const baseUrl = 'https://crudcrud.com/api/2a35fafcedc4484797d80c30d94793e1/user';
+// const baseUrlProd = 'https://crudcrud.com/api/2a35fafcedc4484797d80c30d94793e1/user';
+const baseUrlDev = 'http://localhost:3000/user';
+const baseUrl = baseUrlDev;
 
 export function timeoutMock(timeout: number) {
     return new Promise((resolve) => {
@@ -23,7 +25,6 @@ export const request = async (reqObj?: RequestObj) => {
         const res = await fetch(url, settings);
         if (!res.ok) throw new Error(res.statusText);
 
-        console.log(res);
         const resData = await res.json();
         if (resData.error) throw new Error(resData.error);
         return resData;

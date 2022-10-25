@@ -1,10 +1,7 @@
 /* eslint-disable no-restricted-syntax */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable class-methods-use-this */
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { UserIdT, UserT } from '../types.type';
+import { UserT } from '../types.type';
 import { initialDb } from '../init';
 import { request } from './request';
 
@@ -12,45 +9,49 @@ import { request } from './request';
     providedIn: 'root',
 })
 export class ApiService {
-    constructor(private http: HttpClient) {}
-    private users$ = new BehaviorSubject<UserIdT[]>([]);
+    private users: UserT[] = [];
+    private users$ = new BehaviorSubject<UserT[]>([]);
+    constructor() {
+        this.users$.subscribe((data) => { this.users = data; });
+    }
 
     async getUsers() {
         const res = await request();
         this.users$.next(res);
-        console.log(res);
-        return this.users$;
     }
 
     async post(user: UserT) {
-        await request({
+        request({
             settings: {
                 method: 'POST',
                 body: JSON.stringify(user),
             },
         });
+
+        this.users$.next([...this.users, user]);
     }
 
     async deleteUser(id: string) {
-        await request({
+        request({
             url: id,
             settings: {
                 method: 'DELETE',
             },
         });
+
+        this.users$.next([
+            ...this.users.filter((user) => user.id !== id),
+        ]);
     }
 
     async refresh() {
-        const users = this.users$.getValue();
-        if (users.length > 0) {
-            users.forEach((user) => {
-                this.deleteUser(user._id);
-            });
+        for await (const user of this.users) {
+            this.deleteUser(user.id);
         }
 
         for await (const user of initialDb) {
             this.post(user);
         }
-        this.getUsers();
+        console.log(this.users);
     }
 }

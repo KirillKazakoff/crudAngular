@@ -5,11 +5,8 @@ export type UserT = {
     email: string;
     age: number;
     gender: string;
+    id: string;
 };
-
-export type UserIdT = {
-    _id: string;
-} & UserT;
 
 // RequestType
 export type RequestObj = {
