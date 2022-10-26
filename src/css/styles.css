@@ -72,3 +72,11 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+.btn__edit:hover {
+    filter: var(--royalblue-filter);
+}
+
+.btn__delete:hover {
+    filter: var(--red-filter);
+}

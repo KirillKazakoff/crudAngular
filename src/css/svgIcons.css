@@ -1,26 +1,7 @@
 :root {
-    --error-filter: brightness(0) saturate(100%) invert(83%) sepia(79%)
-        saturate(3089%) hue-rotate(294deg) brightness(101%) contrast(100%);
-
     --red-filter: brightness(0) saturate(100%) invert(30%) sepia(37%)
         saturate(5375%) hue-rotate(1deg) brightness(101%) contrast(106%);
 
     --royalblue-filter: brightness(0) saturate(100%) invert(33%) sepia(64%)
         saturate(1371%) hue-rotate(203deg) brightness(100%) contrast(92%);
-}
-
-.filter-error {
-    filter: var(--error-filter);
-}
-
-.filter-success {
-    filter: var(--success-filter);
-}
-
-.svg-delete:hover {
-    filter: var(--error-filter);
-}
-
-.svg-edit:hover {
-    filter: var(--royalblue-filter);
 }
