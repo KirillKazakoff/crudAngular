@@ -6,21 +6,40 @@ import { UserT } from '../types.type';
     template: `
         <div class="table">
             <div class="table__header">
-                <li class="table__head">First name</li>
-                <li class="table__head">Last name</li>
-                <li class="table__head">Email</li>
-                <li class="table__head">Age</li>
-                <li class="table__head">Gender</li>
+                <li class="table__head table__head-firstname">First name</li>
+                <li class="table__head table__head-lastname">Last name</li>
+                <li class="table__head table__head-email">Email</li>
+                <li class="table__head table__head-age">Age</li>
+                <li class="table__head table__head-gender">Gender</li>
+                <li class="table__head table__head-controls">Controls</li>
             </div>
-            <div class="table__body" *ngFor="let user of users">
-                <ul class="table__row">
-                    <li class="table__cell">{{ user.firstname }}</li>
-                    <li class="table__cell">{{ user.lastname }}</li>
-                    <li class="table__cell">
+            <div class="table__body">
+                <ul class="table__row" *ngFor="let user of users">
+                    <li class="table__cell table__cell-firstname">
+                        {{ user.firstname }}
+                    </li>
+                    <li class="table__cell table__cell-lastname">
+                        {{ user.lastname }}
+                    </li>
+                    <li class="table__cell table__cell-email">
                         {{ user.email }}
                     </li>
-                    <li class="table__cell">{{ user.age }}</li>
-                    <li class="table__cell">{{ user.gender }}</li>
+                    <li class="table__cell table__cell-age">{{ user.age }}</li>
+                    <li class="table__cell table__cell-gender">
+                        {{ user.gender }}
+                    </li>
+                    <li class="table__cell table__cell-controls">
+                        <img
+                            class="svg svg-edit"
+                            src="assets/svg/edit.svg"
+                            width="30px"
+                        />
+                        <img
+                            class="svg svg-delete"
+                            src="assets/svg/delete.svg"
+                            width="35px"
+                        />
+                    </li>
                 </ul>
             </div>
         </div>

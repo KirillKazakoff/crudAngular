@@ -21,7 +21,6 @@ body {
 /* table__header */
 .table__header {
     display: flex;
-    justify-content: space-around;
     border-bottom: 2px solid black;
     font-size: 24px;
 }
@@ -32,6 +31,12 @@ body {
     padding: 5px;
 }
 
+.table__head-controls,
+.table__head-gender,
+.table__head-age {
+    max-width: 130px;
+}
+
 .table__head:last-child {
     border: none;
 }
@@ -40,7 +45,6 @@ body {
 .table__row {
     display: flex;
     font-size: 18px;
-    justify-content: space-around;
     border-bottom: 2px solid grey;
 }
 
@@ -56,4 +60,15 @@ body {
 
 .table__cell:last-child {
     border: none;
+}
+
+.table__cell-controls,
+.table__cell-gender,
+.table__cell-age {
+    max-width: 130px;
+}
+
+.table__cell-controls {
+    display: flex;
+    justify-content: space-between;
 }
