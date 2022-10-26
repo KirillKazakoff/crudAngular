@@ -9,7 +9,7 @@ import { request } from './request';
     providedIn: 'root',
 })
 export class ApiService {
-    private users: UserT[] = [];
+    users: UserT[] = [];
     private users$ = new BehaviorSubject<UserT[]>([]);
     constructor() {
         this.users$.subscribe((data) => { this.users = data; });
@@ -18,6 +18,7 @@ export class ApiService {
     async getUsers() {
         const res = await request();
         this.users$.next(res);
+        return this.users$;
     }
 
     async post(user: UserT) {
