@@ -45,11 +45,6 @@ body {
 .table__row {
     display: flex;
     font-size: 18px;
-    border-bottom: 2px solid grey;
-}
-
-.table__row:last-child {
-    border: none;
 }
 
 .table__cell {
@@ -66,11 +61,6 @@ body {
 .table__cell-gender,
 .table__cell-age {
     max-width: 130px;
-}
-
-.table__cell-controls {
-    display: flex;
-    justify-content: space-between;
 }
 
 .btn__edit:hover {

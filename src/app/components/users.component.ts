@@ -9,10 +9,10 @@ import { UserT } from '../types.type';
         <div class="table" novalidate>
             <table-header></table-header>
             <div class="table__body">
-                <!-- *ngFor="let user of users$ | async" -->
-                <user [user]="user" *ngFor="let user of users$ | async">
-                    <!-- <user [user]="user"></user> -->
-                </user>
+                <user-form
+                    [user]="user"
+                    *ngFor="let user of users$ | async"
+                ></user-form>
             </div>
         </div>
     `,

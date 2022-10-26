@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { UserT } from '../types.type';
 
 @Component({
-    selector: 'user',
+    selector: 'user-form',
     template: `
         <form #formTable="ngForm" class="table__row">
             <input
@@ -23,24 +23,15 @@ import { UserT } from '../types.type';
                 {{ user.gender }}
             </li>
             <li class="table__cell table__cell-controls">
-                <button type="button" class="btn btn__edit">
-                    <img
-                        src="assets/svg/edit.svg"
-                        width="30px"
-                        alt="button edit"
-                    />
-                </button>
-                <button type="button" class="btn btn__delete">
-                    <img
-                        src="assets/svg/delete.svg"
-                        width="35px"
-                        alt="button delete"
-                    />
-                </button>
+                <user-form-controls></user-form-controls>
             </li>
         </form>
     `,
+    styles: [
+        ':host { border-bottom: 1px solid black; display: block}',
+        ':host:last-child {border: none}',
+    ],
 })
-export class UserComponent {
+export class UserFormComponent {
     @Input() user!: UserT;
 }
