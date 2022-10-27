@@ -8,8 +8,12 @@ body {
     padding: 20px;
 }
 
-/* table styles */
-.table {
+.btn {
+    cursor: pointer;
+}
+
+/* users*/
+.users {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -18,49 +22,69 @@ body {
     border: 2px solid grey;
 }
 
-/* table__header */
-.table__header {
+/* users__header */
+.users__header {
     display: flex;
     border-bottom: 2px solid black;
     font-size: 24px;
 }
 
-.table__head {
+.users__head {
     flex: 1;
     border-right: 1px solid grey;
     padding: 5px;
 }
 
-.table__head-controls,
-.table__head-gender,
-.table__head-age {
+.users__head-controls,
+.users__head-gender,
+.users__head-age {
     max-width: 130px;
 }
 
-.table__head:last-child {
+.users__head:last-child {
     border: none;
 }
 
-/* table__body */
-.table__row {
+/* user__body */
+.user-form {
+    border-bottom: 1px solid black;
+    display: block;
+}
+
+.user-form:last-of-type {
+    border-bottom: none;
+}
+
+.user-form--new {
+    display: block;
+    border-top: 1px solid black;
+}
+
+.user__row {
     display: flex;
     font-size: 18px;
 }
 
-.table__cell {
+.user__cell {
     flex: 1;
     border-right: 1px solid grey;
     padding: 5px;
 }
 
-.table__cell:last-child {
+.user__cell:last-child {
     border: none;
 }
 
-.table__cell-controls,
-.table__cell-gender,
-.table__cell-age {
+.user__cell-controls,
+.user__cell-gender,
+.user__cell-age {
     max-width: 130px;
+}
+
+/* .controls */
+.user-controls {
+    display: flex;
+    justify-content: space-around;
 }
 
 .btn__edit:hover {
@@ -69,4 +93,8 @@ body {
 
 .btn__delete:hover {
     filter: var(--red-filter);
+}
+
+.hello {
+    background-color: red;
 }

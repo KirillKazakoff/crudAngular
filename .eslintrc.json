@@ -64,7 +64,8 @@
                 ],
                 "import/prefer-default-export": 0,
                 "@typescript-eslint/lines-between-class-members": 0,
-                "@angular-eslint/component-class-suffix": 0
+                "@angular-eslint/component-class-suffix": 0,
+                "@typescript-eslint/quotes": 0
             }
         },
         {

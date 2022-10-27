@@ -6,13 +6,17 @@ import { UserT } from '../types.type';
 @Component({
     selector: 'users',
     template: `
-        <div class="table" novalidate>
-            <table-header></table-header>
+        <div class="users" novalidate>
+            <users-header></users-header>
             <div class="table__body">
                 <user-form
+                    class="user-form"
                     [user]="user"
                     *ngFor="let user of users$ | async"
-                ></user-form>
+                >
+                    <user-controls class="user-controls"></user-controls>
+                </user-form>
+                <user-form-new class="user-form--new"></user-form-new>
             </div>
         </div>
     `,
