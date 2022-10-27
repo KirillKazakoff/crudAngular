@@ -7,11 +7,12 @@ import { ApiService } from './services/api/api.service';
 import { AppComponent } from './components/app.component';
 import { UsersComponent } from './components/users.component';
 import { UsersHeader } from './components/users-header.component';
-import { UserControlsComponent } from './components/user/user-controls.component';
+import { UserDefaultControlsComponent } from './components/user/user-controls.component';
 import { UserComponent } from './components/user/user.component';
 import { UserNewComponent } from './components/user/user-new.component';
 import { UserNewControlsComponent } from './components/user/user-new-controls';
 import { UserNewService } from './services/user-new.service';
+import { UserDefaultComponent } from './components/user/user-default.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { UserNewService } from './services/user-new.service';
         UsersComponent,
         UsersHeader,
         UserComponent,
-        UserControlsComponent,
+        UserDefaultComponent,
+        UserDefaultControlsComponent,
         UserNewComponent,
         UserNewControlsComponent,
     ],

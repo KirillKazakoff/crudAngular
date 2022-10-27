@@ -1,30 +1,28 @@
-import { Component } from '@angular/core';
-import { nanoid } from 'nanoid';
-import { UserT } from '../../types.type';
+/* eslint-disable class-methods-use-this */
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UserNewService } from '../../services/user-new.service';
+import { UserComponent } from './user.component';
 
 @Component({
     selector: 'user-new',
     template: `
-        <user class="user-new" [user]="user">
-            <user-new-controls
-                (save)="log()"
-                class="user__controls"
-            ></user-new-controls>
+        <user class="user-new" [user]="user" #userForm>
+            <user-new-controls class="user__controls"></user-new-controls>
         </user>
+        <button (click)="log(userForm.formUser)">Button</button>
     `,
 })
 export class UserNewComponent {
-    user: UserT = {
-        firstname: '',
-        lastname: '',
-        email: '',
-        gender: '',
-        age: 0,
-        id: nanoid(),
-    };
+    constructor(private userNewService: UserNewService) {}
+    user = this.userNewService.user;
+    @ViewChild('userForm') userForm!: UserComponent;
 
-    isAddingUser = false;
-    log() {
-        console.log(this.user);
+    log(form: NgForm) {
+        console.log(this.userNewService.userForm.valid);
+    }
+
+    ngAfterViewInit() {
+        this.userNewService.userForm = this.userForm.formUser;
     }
 }

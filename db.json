@@ -1,28 +1,36 @@
 {
-    "user": [
-        {
-            "firstname": "Homer",
-            "lastname": "Sympson",
-            "email": "homer@mail.com",
-            "age": 30,
-            "gender": "male",
-            "id": "vKZS46FaBfqZW-y6rep2A"
-        },
-        {
-            "firstname": "Alexander",
-            "lastname": "Rosenbaum",
-            "email": "alexros@mail.com",
-            "age": 50,
-            "gender": "male",
-            "id": "ITq5GG2gfjJSaPgFfus06"
-        },
-        {
-            "firstname": "Guzka",
-            "lastname": "Hitrayu",
-            "email": "something@mail.com",
-            "age": 50,
-            "gender": "female",
-            "id": "PuPlXkrVmVycITFvo6bgW"
-        }
-    ]
+  "user": [
+    {
+      "firstname": "Homer",
+      "lastname": "Sympson",
+      "email": "homer@mail.com",
+      "age": 30,
+      "gender": "male",
+      "id": "vKZS46FaBfqZW-y6rep2A"
+    },
+    {
+      "firstname": "Alexander",
+      "lastname": "Rosenbaum",
+      "email": "alexros@mail.com",
+      "age": 50,
+      "gender": "male",
+      "id": "ITq5GG2gfjJSaPgFfus06"
+    },
+    {
+      "firstname": "Guzka",
+      "lastname": "Hitrayu",
+      "email": "something@mail.com",
+      "age": 50,
+      "gender": "female",
+      "id": "PuPlXkrVmVycITFvo6bgW"
+    },
+    {
+      "firstname": "dsfsdfs",
+      "lastname": "sdfsdf",
+      "email": "fsd",
+      "gender": "",
+      "age": 0,
+      "id": "n9n7Z3EgkMrwJ87lkUng1"
+    }
+  ]
 }
