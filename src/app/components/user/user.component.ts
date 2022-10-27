@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { UserT } from 'src/app/types.type';
 
 @Component({
-    selector: 'user-form',
+    selector: 'user',
     template: `
         <form #formUser="ngForm" class="user__row">
             <input
@@ -26,13 +26,14 @@ import { UserT } from 'src/app/types.type';
                 {{ user.gender }}
             </div>
             <div class="user__cell user__cell-controls">
-                <user-controls class="user-controls"></user-controls>
+                <ng-content></ng-content>
             </div>
         </form>
     `,
 })
-export class UserFormComponent {
+export class UserComponent {
     @Input() user!: UserT;
+    isEdit = false;
 
     log(value: string) {
         console.log(value);

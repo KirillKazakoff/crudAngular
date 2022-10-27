@@ -1,4 +1,4 @@
-import { RequestObj } from '../types.type';
+import { RequestObj } from '../../types.type';
 
 // const baseUrlProd = 'https://crudcrud.com/api/2a35fafcedc4484797d80c30d94793e1/user';
 const baseUrlDev = 'http://localhost:3000/user';

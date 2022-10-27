@@ -28,3 +28,9 @@
 //         id: nanoid(),
 //     };
 // }
+
+// @ViewChild('tbody') tbody!: ElementRef;
+
+// ngAfterViewInit() {
+//     console.log(this.tbody);
+// }

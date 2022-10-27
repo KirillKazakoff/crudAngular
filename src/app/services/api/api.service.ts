@@ -1,8 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserT } from '../types.type';
-import { initialDb } from '../init';
+import { UserT } from '../../types.type';
+import { initialDb } from '../../init';
 import { request } from './request';
 
 @Injectable({

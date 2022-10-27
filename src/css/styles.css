@@ -45,17 +45,17 @@ body {
     border: none;
 }
 
-/* user__body */
-.user-form {
+/* user */
+.user {
     border-bottom: 1px solid black;
     display: block;
 }
 
-.user-form:last-of-type {
+.user:last-of-type {
     border-bottom: none;
 }
 
-.user-form--new {
+.user-new {
     display: block;
     border-top: 1px solid black;
 }
@@ -82,17 +82,23 @@ body {
 }
 
 /* .controls */
-.user-controls {
+.user__controls {
     display: flex;
     justify-content: space-around;
 }
 
-.btn__edit:hover {
+.btn-edit:hover,
+.btn-save:hover,
+.btn-add:hover {
     filter: var(--royalblue-filter);
 }
 
-.btn__delete:hover {
+.btn-delete:hover {
     filter: var(--red-filter);
+}
+
+.btn-add {
+    margin-top: 10px;
 }
 
 .hello {
