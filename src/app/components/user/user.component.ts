@@ -1,45 +1,76 @@
 /* eslint-disable class-methods-use-this */
 import { Component, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserT } from 'src/app/types.type';
-import { UserEmptyT } from '../../types.type';
+import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
 
 @Component({
     selector: 'user',
     template: `
-        <form #formUser="ngForm" class="user__row" novalidate>
-            <input
-                [(ngModel)]="user.firstname"
-                name="firstname"
-                class="user__cell user__cell-firstname"
-                placeholder="Write firstname"
-                required
-            />
-            <input
-                [(ngModel)]="user.lastname"
-                name="lastname"
-                class="user__cell user__cell-lastname"
-                placeholder="Write lastname"
-            />
-            <input
-                [(ngModel)]="user.email"
-                name="email"
-                class="user__cell user__cell-email"
-                placeholder="Insert email"
-            />
-            <input
-                [(ngModel)]="user.age"
-                name="age"
-                class="user__cell user__cell-age"
-                placeholder="Insert age"
-                type="number"
-            />
-            <input
-                [(ngModel)]="user.gender"
-                name="gender"
-                class="user__cell user__cell-gender"
-                placeholder="Insert gender"
-            />
+        <form #formTemplateUser="ngForm" class="user__row" novalidate>
+            <div
+                class="input-wrapper user__cell user__cell-firstname"
+                [class.is-invalid]="firstname.invalid"
+            >
+                <input
+                    #firstname="ngModel"
+                    name="firstname"
+                    [(ngModel)]="user.firstname"
+                    placeholder="Write firstname"
+                    required
+                />
+            </div>
+            <div
+                class="input-wrapper user__cell user__cell-lastname"
+                [class.is-invalid]="lastname.invalid"
+            >
+                <input
+                    #lastname="ngModel"
+                    name="lastname"
+                    [(ngModel)]="user.lastname"
+                    placeholder="Write lastname"
+                    required
+                />
+            </div>
+
+            <div
+                class="input-wrapper user__cell user__cell-email"
+                [class.is-invalid]="email.invalid"
+            >
+                <input
+                    #email="ngModel"
+                    [(ngModel)]="user.email"
+                    name="email"
+                    placeholder="Insert email"
+                    required
+                />
+            </div>
+
+            <div
+                class="input-wrapper user__cell user__cell-email"
+                [class.is-invalid]="age.invalid"
+            >
+                <input
+                    #age="ngModel"
+                    [(ngModel)]="user.age"
+                    name="age"
+                    placeholder="Insert age"
+                    required
+                    pattern="[1-9]\\d*"
+                    type="number"
+                />
+            </div>
+            <div
+                class="input-wrapper user__cell user__cell-email"
+                [class.is-invalid]="gender.invalid"
+            >
+                <input
+                    #gender="ngModel"
+                    [(ngModel)]="user.gender"
+                    name="gender"
+                    placeholder="Insert gender"
+                    required
+                />
+            </div>
             <div class="user__cell user__cell-controls">
                 <ng-content></ng-content>
             </div>
@@ -47,11 +78,14 @@ import { UserEmptyT } from '../../types.type';
     `,
 })
 export class UserComponent {
-    @ViewChild('formUser') formUser!: NgForm;
+    @ViewChild('formTemplateUser') formTemplateUser!: NgForm;
     @Input() user!: UserT | UserEmptyT;
-    isEdit = false;
+    @Input() isEdit = true;
+    formModel!: UserFormT;
 
-    log(value: string) {
-        console.log(this.user);
+    ngAfterViewInit() {
+        setTimeout(() => {
+            this.formModel = this.formTemplateUser.form as UserFormT;
+        });
     }
 }

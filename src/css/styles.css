@@ -55,6 +55,8 @@ body {
     border-bottom: none;
 }
 
+/* user-validation */
+
 .user-new {
     display: block;
     border-top: 1px solid black;
@@ -63,6 +65,21 @@ body {
 .user__row {
     display: flex;
     font-size: 18px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.is-invalid::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    outline: 1px solid red;
+    pointer-events: none;
 }
 
 .user__cell {
@@ -100,8 +117,4 @@ body {
 
 .btn-add {
     margin-top: 10px;
-}
-
-.hello {
-    background-color: red;
 }

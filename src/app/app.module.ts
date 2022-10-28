@@ -16,6 +16,7 @@ import { UserDefaultComponent } from './components/user/user-default.component';
 import { BtnEdit } from './components/buttons/btn-edit.component';
 import { BtnSave } from './components/buttons/btn-save.component';
 import { BtnRemove } from './components/buttons/btn-remove.component';
+import { InputWrapper } from './components/user/form/input-wrapper';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,8 @@ import { BtnRemove } from './components/buttons/btn-remove.component';
         BtnEdit,
         BtnSave,
         BtnRemove,
+
+        InputWrapper,
     ],
     imports: [
         BrowserModule,

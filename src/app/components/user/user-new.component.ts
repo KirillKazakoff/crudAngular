@@ -21,6 +21,6 @@ export class UserNewComponent {
     }
 
     ngAfterViewInit() {
-        this.userNewService.userForm = this.userForm.formUser;
+        this.userNewService.userForm = this.userForm.formModel;
     }
 }

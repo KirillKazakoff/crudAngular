@@ -25,7 +25,7 @@ export class UserDefaultComponent {
     constructor(private apiService: ApiService) {}
 
     save() {
-        if (this.userForm.formUser.valid) {
+        if (this.userForm.formModel.valid) {
             this.apiService.put(this.user);
         }
         this.toggleEdit();
@@ -41,6 +41,5 @@ export class UserDefaultComponent {
 
     edit() {
         this.toggleEdit();
-        console.log(this.isEdit);
     }
 }
