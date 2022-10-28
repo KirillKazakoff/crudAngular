@@ -9,17 +9,23 @@ import { ApiService } from './api/api.service';
     providedIn: 'root',
 })
 export class UserNewService {
-    constructor(private apiService: ApiService) {}
+    constructor(private apiService: ApiService) {
+        this.initUser();
+    }
     userForm!: NgForm;
-    user: UserEmptyT = {
-        firstname: '',
-        lastname: '',
-        email: '',
-        gender: '',
-        age: '',
-        id: nanoid(),
-    };
+    user!: UserEmptyT;
     private isActive$ = new BehaviorSubject<boolean>(false);
+
+    initUser() {
+        this.user = {
+            firstname: '',
+            lastname: '',
+            email: '',
+            gender: '',
+            age: '',
+            id: nanoid(),
+        };
+    }
 
     toUser() {
         this.user.age = +this.user.age;
@@ -30,6 +36,7 @@ export class UserNewService {
         const user = this.toUser();
         this.apiService.post(user);
         this.toggleActive();
+        this.initUser();
     }
 
     toggleActive() {

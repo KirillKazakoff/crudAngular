@@ -85,6 +85,7 @@ body {
 .user__controls {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .btn-edit:hover,

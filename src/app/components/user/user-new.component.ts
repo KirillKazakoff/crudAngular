@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { UserNewService } from '../../services/user-new.service';
 import { UserComponent } from './user.component';
 
@@ -10,7 +9,6 @@ import { UserComponent } from './user.component';
         <user class="user-new" [user]="user" #userForm>
             <user-new-controls class="user__controls"></user-new-controls>
         </user>
-        <button (click)="log(userForm.formUser)">Button</button>
     `,
 })
 export class UserNewComponent {
@@ -18,7 +16,7 @@ export class UserNewComponent {
     user = this.userNewService.user;
     @ViewChild('userForm') userForm!: UserComponent;
 
-    log(form: NgForm) {
+    log() {
         console.log(this.userNewService.userForm.valid);
     }
 

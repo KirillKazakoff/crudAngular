@@ -1,25 +1,46 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { UserEmptyT, UserT } from 'src/app/types.type';
+import { UserT } from 'src/app/types.type';
 import { UserComponent } from './user.component';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
     selector: 'user-default',
     template: `
         <user #userForm class="user" [user]="user">
             <user-default-controls
+                (save)="save()"
+                (edit)="edit()"
+                (remove)="remove()"
                 [isEdit]="isEdit"
                 class="user__controls"
             ></user-default-controls>
         </user>
-        <!-- <button (click)="click(userForm.formUser)">hey</button> -->
     `,
 })
 export class UserDefaultComponent {
     isEdit = false;
-    @Input() user!: UserT | UserEmptyT;
+    @Input() user!: UserT;
     @ViewChild('userForm') userForm!: UserComponent;
 
-    click(form: any) {
-        console.log(this.user);
+    constructor(private apiService: ApiService) {}
+
+    save() {
+        if (this.userForm.formUser.valid) {
+            this.apiService.put(this.user);
+        }
+        this.toggleEdit();
+    }
+
+    remove() {
+        this.apiService.deleteUser(this.user.id);
+    }
+
+    toggleEdit() {
+        this.isEdit = !this.isEdit;
+    }
+
+    edit() {
+        this.toggleEdit();
+        console.log(this.isEdit);
     }
 }

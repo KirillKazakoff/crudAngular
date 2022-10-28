@@ -12,7 +12,9 @@ export class ApiService {
     users: UserT[] = [];
     private users$ = new BehaviorSubject<UserT[]>([]);
     constructor() {
-        this.users$.subscribe((data) => { this.users = data; });
+        this.users$.subscribe((data) => {
+            this.users = data;
+        });
     }
 
     async getUsers() {
@@ -22,7 +24,7 @@ export class ApiService {
     }
 
     async post(user: UserT) {
-        request({
+        await request({
             settings: {
                 method: 'POST',
                 body: JSON.stringify(user),
@@ -32,17 +34,29 @@ export class ApiService {
         this.users$.next([...this.users, user]);
     }
 
+    async put(user: UserT) {
+        await request({
+            url: user.id,
+            settings: {
+                method: 'PUT',
+                body: JSON.stringify(user),
+            },
+        });
+        const replacedIndex = this.users.indexOf(user);
+        this.users.splice(replacedIndex, 1);
+        this.users.splice(replacedIndex, 0, user);
+        this.users$.next(this.users);
+    }
+
     async deleteUser(id: string) {
-        request({
+        await request({
             url: id,
             settings: {
                 method: 'DELETE',
             },
         });
 
-        this.users$.next([
-            ...this.users.filter((user) => user.id !== id),
-        ]);
+        this.users$.next([...this.users.filter((user) => user.id !== id)]);
     }
 
     async refresh() {
