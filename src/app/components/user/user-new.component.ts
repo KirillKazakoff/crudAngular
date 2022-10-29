@@ -6,7 +6,7 @@ import { UserComponent } from './user.component';
 @Component({
     selector: 'user-new',
     template: `
-        <user class="user-new" [user]="user" #userForm>
+        <user #userForm class="user-new" [user]="user" [isEdit]="true">
             <user-new-controls class="user__controls"></user-new-controls>
         </user>
     `,
@@ -17,10 +17,12 @@ export class UserNewComponent {
     @ViewChild('userForm') userForm!: UserComponent;
 
     log() {
-        console.log(this.userNewService.userForm.valid);
+        console.log(this.userForm.formModel);
     }
 
     ngAfterViewInit() {
-        this.userNewService.userForm = this.userForm.formModel;
+        setTimeout(() => {
+            this.userNewService.userForm = this.userForm.formModel;
+        });
     }
 }

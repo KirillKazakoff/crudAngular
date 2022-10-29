@@ -7,26 +7,23 @@ import { UserNewService } from '../services/user-new.service';
 @Component({
     selector: 'users',
     template: `
-        <div class="users" novalidate>
-            <users-header></users-header>
-            <div class="table__body">
-                <user-default
-                    #userForm
-                    class="user"
-                    [user]="user"
-                    *ngFor="let user of users$ | async"
-                ></user-default>
-                <user-new
-                    #userNewForm
-                    *ngIf="isActiveForm"
-                    class="user-form--new"
-                ></user-new>
+        <div class="users-wrapper">
+            <div class="users" novalidate>
+                <users-header></users-header>
+                <div class="table__body">
+                    <user-default
+                        #userForm
+                        class="user"
+                        [user]="user"
+                        *ngFor="let user of users$ | async"
+                    ></user-default>
+                    <user-new #userNewForm *ngIf="isActiveForm"></user-new>
+                </div>
             </div>
+            <button class="btn btn-add" *ngIf="!isActiveForm" (click)="add()">
+                <img width="40px" src="assets/svg/add.svg" />
+            </button>
         </div>
-
-        <button class="btn btn-add" *ngIf="!isActiveForm" (click)="add()">
-            <img width="35px" src="assets/svg/add.svg" />
-        </button>
     `,
 })
 export class UsersComponent {

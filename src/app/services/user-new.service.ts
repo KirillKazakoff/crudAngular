@@ -32,10 +32,13 @@ export class UserNewService {
     }
 
     addUser() {
-        const user = this.toUser();
-        this.apiService.post(user);
-        this.toggleActive();
-        this.initUser();
+        this.userForm.markAllAsTouched();
+        if (this.userForm.valid) {
+            const user = this.toUser();
+            this.apiService.post(user);
+            this.toggleActive();
+            this.initUser();
+        }
     }
 
     toggleActive() {
