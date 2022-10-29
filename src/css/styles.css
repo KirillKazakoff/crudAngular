@@ -1,5 +1,7 @@
 :root {
     --cell-width: 150px;
+    --yellow: #ffa800;
+    --cell-padding: 10px;
 }
 
 /* main-styles */
@@ -25,20 +27,15 @@ body {
 /* users__header */
 .users__header {
     display: flex;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     font-size: 24px;
 }
 
 .users__head {
     flex: 1;
     border-right: 1px solid grey;
-    padding: 5px;
-}
-
-.users__head-controls,
-.users__head-gender,
-.users__head-age {
-    max-width: 130px;
+    padding: 15px var(--cell-padding);
+    font-weight: bold;
 }
 
 .users__head:last-child {
@@ -65,10 +62,57 @@ body {
 .user__row {
     display: flex;
     font-size: 18px;
+    position: relative;
 }
 
-.input-wrapper {
+.user__row--active::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    outline: 2px solid var(--yellow);
+}
+
+.user__cell {
+    padding: 30px var(--cell-padding);
+    display: flex;
+    align-items: center;
+    flex: 1;
+    border-right: 1px solid grey;
     position: relative;
+}
+
+.user__cell:last-child {
+    border: none;
+}
+
+.users__head-controls,
+.users__head-gender,
+.users__head-age,
+.user__cell-controls,
+.user__cell-gender,
+.user__cell-age {
+    max-width: 150px;
+}
+
+.user__cell-controls {
+    display: block;
+}
+
+/* validation */
+.input-tip {
+    display: block;
+    position: absolute;
+    content: '';
+    top: -10px;
+    left: 0px;
+
+    font-size: 16px;
+    background-color: var(--yellow);
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .is-invalid::before {
@@ -80,22 +124,6 @@ body {
     bottom: 0;
     outline: 1px solid red;
     pointer-events: none;
-}
-
-.user__cell {
-    flex: 1;
-    border-right: 1px solid grey;
-    padding: 5px;
-}
-
-.user__cell:last-child {
-    border: none;
-}
-
-.user__cell-controls,
-.user__cell-gender,
-.user__cell-age {
-    max-width: 130px;
 }
 
 /* .controls */

@@ -6,71 +6,63 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
 @Component({
     selector: 'user',
     template: `
-        <form #formTemplateUser="ngForm" class="user__row" novalidate>
-            <div
-                class="input-wrapper user__cell user__cell-firstname"
-                [class.is-invalid]="firstname.invalid"
-            >
+        <form
+            #formTemplateUser="ngForm"
+            class="user__row"
+            [class.user__row--active]="isEdit"
+            novalidate
+        >
+            <user-cell class="user__cell" [model]="firstname">
                 <input
                     #firstname="ngModel"
                     name="firstname"
                     [(ngModel)]="user.firstname"
                     placeholder="Write firstname"
                     required
+                    [disabled]="!isEdit"
                 />
-            </div>
-            <div
-                class="input-wrapper user__cell user__cell-lastname"
-                [class.is-invalid]="lastname.invalid"
-            >
+            </user-cell>
+            <user-cell class="user__cell" [model]="lastname">
                 <input
                     #lastname="ngModel"
                     name="lastname"
                     [(ngModel)]="user.lastname"
                     placeholder="Write lastname"
                     required
+                    [disabled]="!isEdit"
                 />
-            </div>
-
-            <div
-                class="input-wrapper user__cell user__cell-email"
-                [class.is-invalid]="email.invalid"
-            >
+            </user-cell>
+            <user-cell class="user__cell" [model]="email">
                 <input
                     #email="ngModel"
                     [(ngModel)]="user.email"
                     name="email"
                     placeholder="Insert email"
                     required
+                    [disabled]="!isEdit"
                 />
-            </div>
-
-            <div
-                class="input-wrapper user__cell user__cell-email"
-                [class.is-invalid]="age.invalid"
-            >
+            </user-cell>
+            <user-cell class="user__cell user__cell-age" [model]="age">
                 <input
                     #age="ngModel"
                     [(ngModel)]="user.age"
                     name="age"
                     placeholder="Insert age"
                     required
-                    pattern="[1-9]\\d*"
+                    [disabled]="!isEdit"
                     type="number"
                 />
-            </div>
-            <div
-                class="input-wrapper user__cell user__cell-email"
-                [class.is-invalid]="gender.invalid"
-            >
+            </user-cell>
+            <user-cell class="user__cell user__cell-gender" [model]="gender">
                 <input
                     #gender="ngModel"
                     [(ngModel)]="user.gender"
                     name="gender"
                     placeholder="Insert gender"
                     required
+                    [disabled]="!isEdit"
                 />
-            </div>
+            </user-cell>
             <div class="user__cell user__cell-controls">
                 <ng-content></ng-content>
             </div>

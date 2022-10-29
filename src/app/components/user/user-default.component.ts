@@ -6,7 +6,7 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
     selector: 'user-default',
     template: `
-        <user #userForm class="user" [user]="user">
+        <user #userForm class="user" [user]="user" [isEdit]="isEdit">
             <user-default-controls
                 (save)="save()"
                 (edit)="edit()"
