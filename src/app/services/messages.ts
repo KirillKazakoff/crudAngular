@@ -9,7 +9,7 @@ export const messages: MessagesT = {
     },
     email: {
         required: 'Введите почту',
-        typeMismatch: 'Вы ввели почту неправильно',
+        pattern: 'Вы ввели почту неправильно',
     },
     age: {
         required: 'Введите возраст',

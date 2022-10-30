@@ -1,23 +1,20 @@
-/* eslint-disable @typescript-eslint/no-redeclare */
-/* eslint-disable class-methods-use-this */
-import { nanoid } from 'nanoid';
 import {
     Component,
     Input,
     Output,
     ViewChild,
     EventEmitter,
-    AfterViewInit,
     ChangeDetectorRef,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
+import { pattern } from './form/emailPattern';
 
 @Component({
     selector: 'user',
     template: `
         <form
-            #formTemplateUser="ngForm"
+            #formUser="ngForm"
             class="user__row"
             [class.user__row--active]="isEdit"
             novalidate
@@ -51,6 +48,7 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
                     placeholder="Insert email"
                     required
                     [disabled]="!isEdit"
+                    [pattern]="pattern"
                 />
             </user-cell>
             <user-cell class="user__cell user__cell-age" [model]="age">
@@ -81,31 +79,26 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
         </form>
     `,
 })
-export class UserComponent implements AfterViewInit {
-    @ViewChild('formTemplateUser') formTemplateUser!: NgForm;
+export class UserComponent {
+    @ViewChild('formUser') formUser!: NgForm;
     @Input() user!: UserT | UserEmptyT;
     @Input() isEdit = true;
     @Output() submitCb = new EventEmitter();
     formModel!: UserFormT;
     changed!: any;
+    pattern = pattern;
 
     constructor(private changeRef: ChangeDetectorRef) {}
     onSubmit() {
         this.changeRef.markForCheck();
-        this.formTemplateUser.form.markAllAsTouched();
-        if (this.formTemplateUser.form.valid) {
-            this.formTemplateUser.form.markAsUntouched();
+        this.form.markAllAsTouched();
+        if (this.form.valid) {
+            this.form.markAsUntouched();
             this.submitCb.emit();
         }
     }
 
-    ngAfterViewInit() {
-        setTimeout(() => {
-            this.formModel = this.formTemplateUser.form as UserFormT;
-        });
-    }
-
-    getId() {
-        return nanoid();
+    get form() {
+        return this.formUser.form;
     }
 }
