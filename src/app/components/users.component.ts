@@ -21,11 +21,11 @@ import { UserNewService } from '../services/user-new.service';
                 </div>
             </div>
             <button
-                class="btn btn-add"
+                class="btn btn-show"
                 *ngIf="!isActiveForm"
                 (click)="showForm()"
             >
-                <img width="40px" src="assets/svg/add.svg" />
+                <img width="45px" src="assets/svg/add.svg" />
             </button>
         </div>
     `,
