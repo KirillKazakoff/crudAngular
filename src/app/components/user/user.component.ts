@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable class-methods-use-this */
+import { nanoid } from 'nanoid';
 import {
     Component,
     Input,
@@ -64,10 +65,7 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
                     type="number"
                 />
             </user-cell>
-            <user-cell
-                class="user__cell user__cell-gender"
-                [model]="getGender(gender)"
-            >
+            <user-cell class="user__cell user__cell-gender" [model]="gender">
                 <input
                     #gender="ngModel"
                     [(ngModel)]="user.gender"
@@ -89,6 +87,7 @@ export class UserComponent implements AfterViewInit {
     @Input() isEdit = true;
     @Output() submitCb = new EventEmitter();
     formModel!: UserFormT;
+    changed!: any;
 
     constructor(private changeRef: ChangeDetectorRef) {}
     onSubmit() {
@@ -100,14 +99,13 @@ export class UserComponent implements AfterViewInit {
         }
     }
 
-    getGender(model: any) {
-        const model2 = { ...model };
-        return model2;
-    }
-
     ngAfterViewInit() {
         setTimeout(() => {
             this.formModel = this.formTemplateUser.form as UserFormT;
         });
+    }
+
+    getId() {
+        return nanoid();
     }
 }

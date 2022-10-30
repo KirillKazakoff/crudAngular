@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges } from '@angular/core';
+/* eslint-disable no-underscore-dangle */
+import { Component, Input, DoCheck } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { messages } from '../../../services/messages';
 
@@ -13,17 +14,25 @@ import { messages } from '../../../services/messages';
         </div>
     `,
 })
-export class UserCellComponent implements OnChanges {
+export class UserCellComponent implements DoCheck {
     @Input() cls!: string;
     @Input() model!: NgModel;
     @Input() value!: number | string | null;
+    private _isInvalid!: boolean | null;
 
     msg: string = '';
     isInvalid: boolean | null = true;
 
-    ngOnChanges() {
+    ngOnInit() {
+        this._isInvalid = true;
+    }
+
+    ngDoCheck() {
         this.isInvalid = this.model.invalid && this.model.touched;
-        console.log(this.model.model);
+        if (this._isInvalid === this.isInvalid) return;
+        this._isInvalid = this.isInvalid;
+
+        console.log('hey');
         this.msg = messages[this.model.name].valueMissing;
     }
 }
