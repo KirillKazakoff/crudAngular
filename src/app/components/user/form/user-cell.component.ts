@@ -25,10 +25,6 @@ export class UserCellComponent implements DoCheck {
     msg: string = '';
     isInvalid: boolean | null = true;
 
-    ngOnInit() {
-        this._isInvalid = true;
-    }
-
     ngDoCheck() {
         if (!this.model) return;
         this.isInvalid = this.model.invalid && this.model.touched;

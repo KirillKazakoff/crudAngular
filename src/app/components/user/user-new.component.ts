@@ -1,9 +1,5 @@
-/* eslint-disable class-methods-use-this */
-import {
-    AfterViewInit, Component, OnDestroy, ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { UserNewService } from '../../services/user-new.service';
-import { UserComponent } from './user.component';
 
 @Component({
     selector: 'user-new',
@@ -22,10 +18,9 @@ import { UserComponent } from './user.component';
         </user>
     `,
 })
-export class UserNewComponent implements AfterViewInit, OnDestroy {
+export class UserNewComponent implements OnDestroy {
     constructor(private userNewService: UserNewService) {}
     user = this.userNewService.user;
-    @ViewChild('userForm') userForm!: UserComponent;
 
     addUser() {
         this.userNewService.addUser();
@@ -33,12 +28,6 @@ export class UserNewComponent implements AfterViewInit, OnDestroy {
 
     removeForm() {
         this.userNewService.toggleActive();
-    }
-
-    ngAfterViewInit() {
-        setTimeout(() => {
-            this.userNewService.userForm = this.userForm.formModel;
-        });
     }
 
     ngOnDestroy() {

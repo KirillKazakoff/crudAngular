@@ -18,6 +18,7 @@ import { BtnSave } from './components/buttons/btn-save.component';
 import { BtnRemove } from './components/buttons/btn-remove.component';
 import { UserCellComponent } from './components/user/form/user-cell.component';
 import { AgeValidatorDirective } from './components/user/form/ageValidator.directive';
+import { InfoComponent } from './components/utils/info';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,8 @@ import { AgeValidatorDirective } from './components/user/form/ageValidator.direc
         BtnEdit,
         BtnSave,
         BtnRemove,
+
+        InfoComponent,
     ],
     imports: [
         BrowserModule,

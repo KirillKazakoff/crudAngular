@@ -30,8 +30,8 @@ export class AgeValidatorDirective implements Validator {
     // eslint-disable-next-line class-methods-use-this
     ageValidator(): ValidatorFn {
         return (control) => {
-            console.log(control.value);
-            if (control.value && control.value < 0) {
+            if (control.value === null) return null;
+            if (control.value <= 0) {
                 return { wrongAge: true };
             }
             return null;

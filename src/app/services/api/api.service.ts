@@ -67,6 +67,5 @@ export class ApiService {
         for await (const user of initialDb) {
             this.post(user);
         }
-        console.log(this.users);
     }
 }

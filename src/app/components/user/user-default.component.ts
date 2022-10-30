@@ -1,6 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserT } from 'src/app/types.type';
-import { UserComponent } from './user.component';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
@@ -25,7 +24,6 @@ import { ApiService } from '../../services/api/api.service';
 export class UserDefaultComponent {
     isEdit = false;
     @Input() user!: UserT;
-    @ViewChild('userForm') userForm!: UserComponent;
 
     constructor(private apiService: ApiService) {}
 

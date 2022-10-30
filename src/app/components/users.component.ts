@@ -22,7 +22,7 @@ import { UserNewService } from '../services/user-new.service';
             </div>
             <button
                 class="btn btn-show"
-                *ngIf="!isActiveForm"
+                [class.btn-show--hidden]="isActiveForm"
                 (click)="showForm()"
             >
                 <img width="45px" src="assets/svg/add.svg" />

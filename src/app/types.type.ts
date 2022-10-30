@@ -34,3 +34,9 @@ export type RequestObj = {
     url?: string;
     settings?: RequestInit;
 };
+
+// InfoType
+export type InfoT = {
+    title: string;
+    desc: string;
+} | null;
