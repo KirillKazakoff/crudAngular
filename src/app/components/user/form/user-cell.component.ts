@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-underscore-dangle */
 import { Component, Input, DoCheck } from '@angular/core';
 import { NgModel } from '@angular/forms';
@@ -28,11 +30,14 @@ export class UserCellComponent implements DoCheck {
     }
 
     ngDoCheck() {
+        if (!this.model) return;
         this.isInvalid = this.model.invalid && this.model.touched;
         if (this._isInvalid === this.isInvalid) return;
         this._isInvalid = this.isInvalid;
 
-        console.log('hey');
-        this.msg = messages[this.model.name].valueMissing;
+        const { errors } = this.model;
+        for (const error in errors) {
+            this.msg = messages[this.model.name][error];
+        }
     }
 }

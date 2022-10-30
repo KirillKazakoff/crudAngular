@@ -2,20 +2,20 @@ type MessagesT = { [key: string]: any };
 
 export const messages: MessagesT = {
     firstname: {
-        valueMissing: 'Введите имя',
+        required: 'Введите имя',
     },
     lastname: {
-        valueMissing: 'Введите фамилию',
+        required: 'Введите фамилию',
     },
     email: {
-        valueMissing: 'Введите почту',
+        required: 'Введите почту',
         typeMismatch: 'Вы ввели почту неправильно',
     },
     age: {
-        valueMissing: 'Введите возраст',
+        required: 'Введите возраст',
         wrongAge: 'Введите возраст больше 0',
     },
     gender: {
-        valueMissing: 'Введите пол',
+        required: 'Введите пол',
     },
 };
