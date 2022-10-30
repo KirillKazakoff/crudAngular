@@ -1,5 +1,12 @@
 /* eslint-disable class-methods-use-this */
-import { Component, Input, ViewChild } from '@angular/core';
+import {
+    Component,
+    Input,
+    Output,
+    ViewChild,
+    EventEmitter,
+    AfterViewInit,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
 
@@ -11,6 +18,7 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
             class="user__row"
             [class.user__row--active]="isEdit"
             novalidate
+            (ngSubmit)="onSubmit()"
         >
             <user-cell class="user__cell" [model]="firstname">
                 <input
@@ -69,11 +77,20 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
         </form>
     `,
 })
-export class UserComponent {
+export class UserComponent implements AfterViewInit {
     @ViewChild('formTemplateUser') formTemplateUser!: NgForm;
     @Input() user!: UserT | UserEmptyT;
     @Input() isEdit = true;
+    @Output() submitCb = new EventEmitter();
     formModel!: UserFormT;
+
+    onSubmit() {
+        this.formModel.markAllAsTouched();
+        if (this.formModel.valid) {
+            this.formModel.markAsUntouched();
+            this.submitCb.emit();
+        }
+    }
 
     ngAfterViewInit() {
         setTimeout(() => {

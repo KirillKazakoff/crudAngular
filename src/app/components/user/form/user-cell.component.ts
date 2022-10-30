@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, DoCheck, Input } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { messages } from '../../../services/messages';
 
@@ -13,7 +13,7 @@ import { messages } from '../../../services/messages';
         </div>
     `,
 })
-export class UserCellComponent {
+export class UserCellComponent implements DoCheck {
     @Input() cls!: string;
     @Input() model!: NgModel;
     msg: string = '';

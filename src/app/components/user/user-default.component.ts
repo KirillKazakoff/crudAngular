@@ -6,9 +6,14 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
     selector: 'user-default',
     template: `
-        <user #userForm class="user" [user]="user" [isEdit]="isEdit">
+        <user
+            #userForm
+            class="user"
+            [user]="user"
+            [isEdit]="isEdit"
+            (submitCb)="save()"
+        >
             <user-default-controls
-                (save)="save()"
                 (edit)="edit()"
                 (remove)="remove()"
                 [isEdit]="isEdit"
@@ -25,11 +30,8 @@ export class UserDefaultComponent {
     constructor(private apiService: ApiService) {}
 
     save() {
-        this.userForm.formModel.markAllAsTouched();
-        if (this.userForm.formModel.valid) {
-            this.apiService.put(this.user);
-            this.toggleEdit();
-        }
+        this.apiService.put(this.user);
+        this.toggleEdit();
     }
 
     remove() {
