@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable class-methods-use-this */
 import {
     Component,
@@ -6,6 +7,7 @@ import {
     ViewChild,
     EventEmitter,
     AfterViewInit,
+    ChangeDetectorRef,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
@@ -52,6 +54,7 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
             </user-cell>
             <user-cell class="user__cell user__cell-age" [model]="age">
                 <input
+                    appAgeValidator
                     #age="ngModel"
                     [(ngModel)]="user.age"
                     name="age"
@@ -61,7 +64,10 @@ import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
                     type="number"
                 />
             </user-cell>
-            <user-cell class="user__cell user__cell-gender" [model]="gender">
+            <user-cell
+                class="user__cell user__cell-gender"
+                [model]="getGender(gender)"
+            >
                 <input
                     #gender="ngModel"
                     [(ngModel)]="user.gender"
@@ -84,12 +90,19 @@ export class UserComponent implements AfterViewInit {
     @Output() submitCb = new EventEmitter();
     formModel!: UserFormT;
 
+    constructor(private changeRef: ChangeDetectorRef) {}
     onSubmit() {
-        this.formModel.markAllAsTouched();
-        if (this.formModel.valid) {
-            this.formModel.markAsUntouched();
+        this.changeRef.markForCheck();
+        this.formTemplateUser.form.markAllAsTouched();
+        if (this.formTemplateUser.form.valid) {
+            this.formTemplateUser.form.markAsUntouched();
             this.submitCb.emit();
         }
+    }
+
+    getGender(model: any) {
+        const model2 = { ...model };
+        return model2;
     }
 
     ngAfterViewInit() {

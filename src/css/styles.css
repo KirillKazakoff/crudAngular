@@ -1,7 +1,8 @@
 :root {
     --cell-width: 150px;
-    --yellow: #ffa800;
     --cell-padding: 10px;
+    --yellow: #ffa800;
+    --secondary: #928f94;
 }
 
 /* main-styles */
@@ -18,11 +19,12 @@ body {
 .users-wrapper {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    padding-bottom: 100px;
     min-width: 900px;
-    margin-top: 50px;
-    /* max-width: 1800px; */
+    max-width: 1800px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .users {
@@ -47,6 +49,11 @@ body {
 .users__head-gender,
 .users__head-controls {
     flex: 1;
+}
+
+.users__head-controls {
+    color: var(--secondary);
+    text-align: center;
 }
 
 .users__head:last-child {

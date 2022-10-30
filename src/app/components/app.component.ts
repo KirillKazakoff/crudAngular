@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',
-    template: `
-        <h1>Crud Angular</h1>
-        <users></users>
-    `,
+    template: ` <users></users> `,
 })
 export class AppComponent {}
