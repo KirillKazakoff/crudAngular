@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { errors$ } from '../../services/api/request';
+import { Component, OnInit } from '@angular/core';
+import { errors$ } from 'src/app/services/api/subjectsRx/errors';
 
 @Component({
     selector: 'info',
@@ -29,8 +29,8 @@ import { errors$ } from '../../services/api/request';
     `,
 })
 export class InfoComponent implements OnInit {
-    @Input() title!: string;
-    @Input() desc!: string;
+    title!: string;
+    desc!: string;
     isActive = false;
 
     toggle() {

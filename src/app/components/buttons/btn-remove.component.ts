@@ -8,6 +8,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
         </button>
     `,
 })
-export class BtnRemove {
+export class BtnRemoveComponent {
     @Output() remove = new EventEmitter();
 }

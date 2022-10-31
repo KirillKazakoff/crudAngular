@@ -1,13 +1,12 @@
-/* eslint-disable class-methods-use-this */
 import {
     Component, Input, OnInit, OnDestroy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { fetchStatus$ } from 'src/app/services/api/request';
+import { fetchStatus$ } from 'src/app/services/api/subjectsRx/fetchStatus';
 
 @Component({
     selector: 'loader',
-    template: ` <div class="loader">loading...</div>`,
+    template: `<div class="loader">loading...</div>`,
 })
 export class LoaderComponent implements OnInit, OnDestroy {
     @Input() id: string = '';
@@ -16,7 +15,8 @@ export class LoaderComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = fetchStatus$.subscribe((status) => {
-            this.isLoading = status.id === this.id && status.status === 'loading';
+            const isThisBtn = status.id === this.id;
+            this.isLoading = status.status === 'loading' && isThisBtn;
         });
     }
 

@@ -11,17 +11,19 @@ import { UsersComponent } from './components/users/users.component';
 import { UserDefaultControlsComponent } from './components/user/user-default-controls.component';
 import { UserComponent } from './components/user/user.component';
 import { UserNewComponent } from './components/user/user-new.component';
-import { UserNewControlsComponent } from './components/user/user-new-controls';
+import { UserNewControlsComponent } from './components/user/user-new-controls.component';
 import { UserNewService } from './services/user-new.service';
 import { UserDefaultComponent } from './components/user/user-default.component';
 import { UserCellComponent } from './components/user/user-cell.component';
 
 import { InfoComponent } from './components/utils/info';
-import { BtnEdit } from './components/buttons/btn-edit.component';
-import { BtnSave } from './components/buttons/btn-save.component';
-import { BtnRemove } from './components/buttons/btn-remove.component';
+
 import { AgeValidatorDirective } from './components/user/utils/ageValidator.directive';
 import { LoaderComponent } from './components/utils/loader';
+import { BtnShowComponent } from './components/buttons/btn-show.component';
+import { BtnEditComponent } from './components/buttons/btn-edit.component';
+import { BtnSaveComponent } from './components/buttons/btn-save.component';
+import { BtnRemoveComponent } from './components/buttons/btn-remove.component';
 
 @NgModule({
     declarations: [
@@ -33,13 +35,14 @@ import { LoaderComponent } from './components/utils/loader';
         UserDefaultControlsComponent,
         UserNewComponent,
         UserNewControlsComponent,
-
         UserCellComponent,
+
         AgeValidatorDirective,
 
-        BtnEdit,
-        BtnSave,
-        BtnRemove,
+        BtnEditComponent,
+        BtnSaveComponent,
+        BtnRemoveComponent,
+        BtnShowComponent,
 
         InfoComponent,
         LoaderComponent,

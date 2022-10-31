@@ -1,6 +1,4 @@
-import {
-    Component, Output, EventEmitter, Input,
-} from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'btn-edit',
@@ -10,6 +8,6 @@ import {
         </button>
     `,
 })
-export class BtnEdit {
+export class BtnEditComponent {
     @Output() edit = new EventEmitter();
 }

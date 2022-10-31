@@ -17,13 +17,12 @@ import { UserT } from 'src/app/types.type';
                 ></user-default>
                 <user-new *ngIf="isActiveForm"></user-new>
             </div>
-            <button
+
+            <btn-show
                 class="btn btn-show"
-                [class.btn-show--hidden]="isActiveForm"
-                (click)="showForm()"
-            >
-                <img width="45px" src="assets/svg/add.svg" />
-            </button>
+                [isActiveForm]="isActiveForm"
+                (showForm)="showForm()"
+            ></btn-show>
         </div>
     `,
 })
@@ -42,6 +41,7 @@ export class UsersComponent implements OnInit {
     }
 
     async ngOnInit() {
+        // await this.apiService.refresh();
         this.users$ = await this.apiService.getUsers();
         this.isActiveForm$.subscribe((value) => {
             this.isActiveForm = value;

@@ -10,6 +10,7 @@ import {
             [class.loader--hidden]="!loader.isLoading"
             [id]="id"
         ></loader>
+
         <btn-edit
             *ngIf="!isEdit && !loader.isLoading"
             (edit)="edit.emit()"

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'app-root',
     template: `
         <users></users>
-        <info title="title" desc="description"></info>
+        <info></info>
     `,
 })
 export class AppComponent {}

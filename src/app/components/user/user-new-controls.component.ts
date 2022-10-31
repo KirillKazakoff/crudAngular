@@ -10,6 +10,7 @@ import {
             [class.loader--hidden]="!loader.isLoading"
             [id]="id"
         ></loader>
+
         <ng-container *ngIf="!loader.isLoading">
             <btn-save></btn-save>
             <btn-remove (remove)="remove.emit()"></btn-remove>

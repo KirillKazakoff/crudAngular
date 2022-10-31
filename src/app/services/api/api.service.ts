@@ -66,6 +66,7 @@ export class ApiService {
     }
 
     async refresh() {
+        await this.getUsers();
         for await (const user of this.users) {
             this.deleteUser(user.id);
         }

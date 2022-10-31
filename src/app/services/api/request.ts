@@ -1,20 +1,14 @@
-import { BehaviorSubject } from 'rxjs';
-import { InfoT, RequestObj, FetchStatusT } from '../../types.type';
+import { RequestObj } from '../../types.type';
+import { errors$, connectionError } from './subjectsRx/errors';
+import { fetchStatus$ } from './subjectsRx/fetchStatus';
 
-// const baseUrlProd = 'https://crudcrud.com/api/2a35fafcedc4484797d80c30d94793e1/user';
-const baseUrlDev = 'http://localhost:3000/user';
-const baseUrl = baseUrlDev;
+const baseUrl = 'http://localhost:3000/user';
 
 export function timeoutMock(timeout: number) {
     return new Promise((resolve) => {
         setTimeout(() => resolve('ok'), timeout);
     });
 }
-
-export const errors$ = new BehaviorSubject<InfoT>(null);
-export const fetchStatus$ = new BehaviorSubject<FetchStatusT>({
-    status: 'idle',
-});
 
 export const request = async (reqObj?: RequestObj) => {
     const url = reqObj?.url ? `${baseUrl}/${reqObj.url}` : baseUrl;
@@ -30,18 +24,18 @@ export const request = async (reqObj?: RequestObj) => {
     try {
         fetchStatus$.next({ status: 'loading', id: reqObj?.id });
         await timeoutMock(500);
+
         const res = await fetch(url, settings);
         if (!res.ok) throw new Error(res.statusText);
 
         const resData = await res.json();
         if (resData.error) throw new Error(resData.error);
+
         fetchStatus$.next({ status: 'loaded', id: reqObj?.id });
         return resData;
     } catch (e) {
-        errors$.next({
-            title: 'Connection error!',
-            desc: 'Check your internet connection...',
-        });
+        fetchStatus$.next({ status: 'failed', id: reqObj?.id });
+        errors$.next(connectionError);
         throw new Error(e as string);
     }
 };

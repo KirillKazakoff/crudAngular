@@ -42,6 +42,7 @@ export type InfoT = {
     desc: string;
 } | null;
 
+// FetchStatusType
 export type FetchStatusT = {
     status: 'idle' | 'loading' | 'loaded' | 'failed';
     id?: string;
