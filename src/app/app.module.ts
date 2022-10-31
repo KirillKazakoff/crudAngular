@@ -16,7 +16,7 @@ import { UserNewService } from './services/user-new.service';
 import { UserDefaultComponent } from './components/user/user-default.component';
 import { UserCellComponent } from './components/user/user-cell.component';
 
-import { InfoComponent } from './components/utils/info';
+import { InfoComponent } from './components/utils/info.component';
 
 import { AgeValidatorDirective } from './components/user/utils/ageValidator.directive';
 import { BtnLoaderComponent } from './components/buttons/btn-loader.component';

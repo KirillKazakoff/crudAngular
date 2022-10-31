@@ -32,7 +32,7 @@
                         ],
                         "styles": [
                             "src/css/defaultStyle.css",
-                            "src/css/svgIcons.css",
+                            "src/css/filters.css",
                             "src/css/styles.css"
                         ],
                         "scripts": []
