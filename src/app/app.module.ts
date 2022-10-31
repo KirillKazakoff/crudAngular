@@ -19,12 +19,12 @@ import { UserCellComponent } from './components/user/user-cell.component';
 import { InfoComponent } from './components/utils/info';
 
 import { AgeValidatorDirective } from './components/user/utils/ageValidator.directive';
-import { BtnLoaderComponent } from './components/utils/btn-loader.component';
+import { BtnLoaderComponent } from './components/buttons/btn-loader.component';
 import { BtnShowComponent } from './components/buttons/btn-show.component';
 import { BtnEditComponent } from './components/buttons/btn-edit.component';
 import { BtnSaveComponent } from './components/buttons/btn-save.component';
 import { BtnRemoveComponent } from './components/buttons/btn-remove.component';
-import { UsersLoaderComponent } from './components/utils/users-loader.component';
+import { UsersLoaderComponent } from './components/users/users-loader.component';
 
 @NgModule({
     declarations: [

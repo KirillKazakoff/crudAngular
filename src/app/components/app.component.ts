@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-root',
     template: `
-        <users #users></users>
+        <users></users>
         <info></info>
     `,
 })
