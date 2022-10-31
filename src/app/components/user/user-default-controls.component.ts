@@ -5,11 +5,11 @@ import {
 @Component({
     selector: 'user-default-controls',
     template: `
-        <loader
+        <btn-loader
             #loader
             [class.loader--hidden]="!loader.isLoading"
             [id]="id"
-        ></loader>
+        ></btn-loader>
 
         <btn-edit
             *ngIf="!isEdit && !loader.isLoading"

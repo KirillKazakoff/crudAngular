@@ -1,7 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-restricted-syntax */
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { FetchStatusT, UserT } from '../../types.type';
+import { BehaviorSubject } from 'rxjs';
+import { UserT } from '../../types.type';
 import { initialDb } from '../../init';
 import { request } from './request';
 
@@ -10,10 +11,8 @@ import { request } from './request';
 })
 export class ApiService {
     users: UserT[] = [];
-    subject$ = new BehaviorSubject(['hey', 'hey2']);
-    statuses$ = new Subject<FetchStatusT[]>();
-
     private users$ = new BehaviorSubject<UserT[]>([]);
+
     constructor() {
         this.users$.subscribe((data) => {
             this.users = data;

@@ -5,11 +5,11 @@ import {
 @Component({
     selector: 'user-new-controls',
     template: `
-        <loader
+        <btn-loader
             #loader
             [class.loader--hidden]="!loader.isLoading"
             [id]="id"
-        ></loader>
+        ></btn-loader>
 
         <ng-container *ngIf="!loader.isLoading">
             <btn-save></btn-save>

@@ -5,12 +5,12 @@ import { Subscription } from 'rxjs';
 import { fetchStatus$ } from 'src/app/services/api/subjectsRx/fetchStatus';
 
 @Component({
-    selector: 'loader',
+    selector: 'btn-loader',
     template: `<div class="loader">loading...</div>`,
 })
-export class LoaderComponent implements OnInit, OnDestroy {
+export class BtnLoaderComponent implements OnInit, OnDestroy {
     @Input() id: string = '';
-    subscription!: Subscription;
+    private subscription!: Subscription;
     isLoading: boolean = false;
 
     ngOnInit() {

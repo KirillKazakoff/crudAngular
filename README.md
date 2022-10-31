@@ -1,27 +1,11 @@
-# Todo2
+# Тестовое задание CRUD приложение на AngularJSv14
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+## Задачи
+- Создать компонент для отображения таблицы с данными (First name / Last name / Email / Age / Gender)
+- Получить данные с backend’a и вывести полученные данные в табличку. 
+- Кнопка добавления новой записи
+- Кнопка удаления записи напротив каждой строки таблицы, по клику запись удаляется запросом на бэкэнде, по успеху — на фронтэнде удаляется
+- Кнопка редактирования напротив каждой строки таблицы
+- По клику на нее, в таблице все инпуты становятся редактируемыми и на месте кнопки редактировать, появляется кнопка сохранить
+- По нажатию на сохранить, отправляется запрос на бэкэнд, по успеху — инпуты опять становятся ридонли и кнопка меняется на «редактировать»
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
