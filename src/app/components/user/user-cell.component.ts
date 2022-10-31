@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { Component, Input, DoCheck } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { messages } from '../../../services/messages';
+import { validationMessages } from './utils/validationMessages';
 
 @Component({
     selector: 'user-cell',
@@ -31,7 +31,7 @@ export class UserCellComponent implements DoCheck {
         const { errors } = this.model;
         if (!errors) return;
         Object.keys(errors).forEach((error) => {
-            this.msg = messages[this.model.name][error];
+            this.msg = validationMessages[this.model.name][error];
         });
     }
 }

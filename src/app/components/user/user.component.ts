@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
-import { pattern } from './form/emailPattern';
+import { emailPattern } from './utils/emailPattern';
 
 @Component({
     selector: 'user',
@@ -48,7 +48,7 @@ import { pattern } from './form/emailPattern';
                     placeholder="Insert email"
                     required
                     [disabled]="!isEdit"
-                    [pattern]="pattern"
+                    [pattern]="emailPattern"
                 />
             </user-cell>
             <user-cell class="user__cell user__cell-age" [model]="age">
@@ -85,8 +85,7 @@ export class UserComponent {
     @Input() isEdit = true;
     @Output() submitCb = new EventEmitter();
     formModel!: UserFormT;
-    changed!: any;
-    pattern = pattern;
+    emailPattern = emailPattern;
 
     constructor(private changeRef: ChangeDetectorRef) {}
     onSubmit() {

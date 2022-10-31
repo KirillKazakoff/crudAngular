@@ -1,6 +1,6 @@
 type MessagesT = { [key: string]: any };
 
-export const messages: MessagesT = {
+export const validationMessages: MessagesT = {
     firstname: {
         required: 'Введите имя',
     },

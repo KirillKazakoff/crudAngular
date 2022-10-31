@@ -56,7 +56,7 @@ export class ApiService {
             },
         });
 
-        this.users$.next([...this.users.filter((user) => user.id !== id)]);
+        this.users$.next(this.users.filter((user) => user.id !== id));
     }
 
     async refresh() {

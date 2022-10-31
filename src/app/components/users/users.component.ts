@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from '../services/api/api.service';
-import { UserT } from '../types.type';
-import { UserNewService } from '../services/user-new.service';
+import { ApiService } from 'src/app/services/api/api.service';
+import { UserNewService } from 'src/app/services/user-new.service';
+import { UserT } from 'src/app/types.type';
 
 @Component({
     selector: 'users',
