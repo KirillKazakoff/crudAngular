@@ -14,6 +14,7 @@ import { UserNewService } from '../../services/user-new.service';
             <user-new-controls
                 (remove)="removeForm()"
                 class="user__controls"
+                [id]="user.id"
             ></user-new-controls>
         </user>
     `,
@@ -22,8 +23,8 @@ export class UserNewComponent implements OnDestroy {
     constructor(private userNewService: UserNewService) {}
     user = this.userNewService.user;
 
-    addUser() {
-        this.userNewService.addUser();
+    async addUser() {
+        await this.userNewService.addUser();
     }
 
     removeForm() {

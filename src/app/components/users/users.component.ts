@@ -11,12 +11,11 @@ import { UserT } from 'src/app/types.type';
             <div class="users">
                 <users-header></users-header>
                 <user-default
-                    #userForm
                     class="user"
                     [user]="user"
                     *ngFor="let user of users$ | async"
                 ></user-default>
-                <user-new #userNewForm *ngIf="isActiveForm"></user-new>
+                <user-new *ngIf="isActiveForm"></user-new>
             </div>
             <button
                 class="btn btn-show"
