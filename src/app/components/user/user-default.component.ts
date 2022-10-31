@@ -17,6 +17,7 @@ import { ApiService } from '../../services/api/api.service';
                 (remove)="remove()"
                 [isEdit]="isEdit"
                 class="user__controls"
+                [id]="user.id"
             ></user-default-controls>
         </user>
     `,
@@ -27,13 +28,13 @@ export class UserDefaultComponent {
 
     constructor(private apiService: ApiService) {}
 
-    save() {
-        this.apiService.put(this.user);
+    async save() {
+        await this.apiService.put(this.user);
         this.toggleEdit();
     }
 
-    remove() {
-        this.apiService.deleteUser(this.user.id);
+    async remove() {
+        await this.apiService.deleteUser(this.user.id);
     }
 
     toggleEdit() {

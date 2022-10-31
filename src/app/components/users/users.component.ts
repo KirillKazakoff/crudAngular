@@ -7,18 +7,16 @@ import { UserT } from 'src/app/types.type';
 @Component({
     selector: 'users',
     template: `
-        <div class="users-wrapper">
-            <div class="users" novalidate>
+        <div class="users__wrapper">
+            <div class="users">
                 <users-header></users-header>
-                <div class="table__body">
-                    <user-default
-                        #userForm
-                        class="user"
-                        [user]="user"
-                        *ngFor="let user of users$ | async"
-                    ></user-default>
-                    <user-new #userNewForm *ngIf="isActiveForm"></user-new>
-                </div>
+                <user-default
+                    #userForm
+                    class="user"
+                    [user]="user"
+                    *ngFor="let user of users$ | async"
+                ></user-default>
+                <user-new #userNewForm *ngIf="isActiveForm"></user-new>
             </div>
             <button
                 class="btn btn-show"

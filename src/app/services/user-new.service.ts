@@ -31,8 +31,8 @@ export class UserNewService {
         return this.user as UserT;
     }
 
-    addUser() {
-        this.apiService.post(this.toUser());
+    async addUser() {
+        await this.apiService.post(this.toUser());
         this.toggleActive();
     }
 

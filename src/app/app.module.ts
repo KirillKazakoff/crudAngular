@@ -21,6 +21,7 @@ import { BtnEdit } from './components/buttons/btn-edit.component';
 import { BtnSave } from './components/buttons/btn-save.component';
 import { BtnRemove } from './components/buttons/btn-remove.component';
 import { AgeValidatorDirective } from './components/user/utils/ageValidator.directive';
+import { LoaderComponent } from './components/utils/loader';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { AgeValidatorDirective } from './components/user/utils/ageValidator.dire
         BtnRemove,
 
         InfoComponent,
+        LoaderComponent,
     ],
     imports: [
         BrowserModule,

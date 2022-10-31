@@ -29,6 +29,7 @@ export class ApiService {
                 method: 'POST',
                 body: JSON.stringify(user),
             },
+            id: user.id,
         });
 
         this.users$.next([...this.users, user]);
@@ -41,6 +42,7 @@ export class ApiService {
                 method: 'PUT',
                 body: JSON.stringify(user),
             },
+            id: user.id,
         });
         const replacedIndex = this.users.indexOf(user);
         this.users.splice(replacedIndex, 1);
@@ -54,6 +56,7 @@ export class ApiService {
             settings: {
                 method: 'DELETE',
             },
+            id,
         });
 
         this.users$.next(this.users.filter((user) => user.id !== id));

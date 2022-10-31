@@ -33,6 +33,7 @@ export type UserFormT = FormGroup<{
 export type RequestObj = {
     url?: string;
     settings?: RequestInit;
+    id: string;
 };
 
 // InfoType
@@ -40,3 +41,8 @@ export type InfoT = {
     title: string;
     desc: string;
 } | null;
+
+export type FetchStatusT = {
+    status: 'idle' | 'loading' | 'loaded' | 'failed';
+    id?: string;
+};

@@ -22,7 +22,7 @@ body {
 }
 
 /* users*/
-.users-wrapper {
+.users__wrapper {
     display: flex;
     flex-direction: column;
     min-width: 900px;
@@ -269,4 +269,10 @@ body {
     background-color: transparent;
     border: 1px solid red;
     color: red;
+}
+
+/* loader */
+
+.loader--hidden {
+    display: none;
 }

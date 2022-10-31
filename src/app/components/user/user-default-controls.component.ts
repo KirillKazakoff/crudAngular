@@ -5,19 +5,16 @@ import {
 @Component({
     selector: 'user-default-controls',
     template: `
-        <ng-template #btnEdit
-            ><btn-edit (edit)="edit.emit()"></btn-edit>
-        </ng-template>
-        <ng-template #btnSave>
-            <btn-save></btn-save>
-        </ng-template>
-
-        <ng-content *ngIf="isEdit; then btnSave; else btnEdit"></ng-content>
+        <loader class="loader" #loader [id]="id"></loader>
+        <btn-edit *ngIf="!isEdit" (edit)="edit.emit()"></btn-edit>
+        <btn-save *ngIf="isEdit && !loader.isLoading"></btn-save>
         <btn-remove (remove)="remove.emit()"></btn-remove>
     `,
 })
 export class UserDefaultControlsComponent {
     @Input() isEdit = false;
+    @Input() id: string = '';
+
     @Output() remove = new EventEmitter();
     @Output() edit = new EventEmitter();
 }
