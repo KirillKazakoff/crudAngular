@@ -5,11 +5,11 @@ import {
 @Component({
     selector: 'user-default-controls',
     template: `
-        <btn-loader [class.loader--hidden]="!isLoading"></btn-loader>
+        <btn-remove *ngIf="!isLoading" (remove)="remove.emit()"></btn-remove>
+        <btn-loader *ngIf="isLoading"></btn-loader>
 
         <btn-edit *ngIf="!isEdit && !isLoading" (edit)="edit.emit()"></btn-edit>
-        <btn-save *ngIf="isEdit && !isLoading"></btn-save>
-        <btn-remove *ngIf="!isLoading" (remove)="remove.emit()"></btn-remove>
+        <btn-save *ngIf="isEdit && !isLoading" (save)="save.emit()"></btn-save>
     `,
 })
 export class UserDefaultControlsComponent {
@@ -19,4 +19,5 @@ export class UserDefaultControlsComponent {
 
     @Output() remove = new EventEmitter();
     @Output() edit = new EventEmitter();
+    @Output() save = new EventEmitter();
 }

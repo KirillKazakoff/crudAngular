@@ -5,7 +5,7 @@ import {
 @Component({
     selector: 'user-new-controls',
     template: `
-        <btn-loader [class.loader--hidden]="!isLoading"></btn-loader>
+        <btn-loader *ngIf="isLoading"></btn-loader>
 
         <ng-container *ngIf="!isLoading">
             <btn-save></btn-save>

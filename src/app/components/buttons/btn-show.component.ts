@@ -6,6 +6,7 @@ import {
     selector: 'btn-show',
     template: `
         <button
+            class="btn"
             [class.btn-show--hidden]="isActiveForm"
             (click)="showForm.emit()"
         >

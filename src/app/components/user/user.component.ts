@@ -88,7 +88,8 @@ export class UserComponent {
     async onSubmit() {
         this.isLoading = true;
         this.form.markAllAsTouched();
-        if (this.form.valid) {
+
+        if (!this.form.invalid) {
             this.form.markAsUntouched();
             await this.submitCb();
         }

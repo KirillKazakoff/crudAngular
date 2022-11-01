@@ -10,33 +10,43 @@ import { ApiService } from '../../services/api/api.service';
             class="user"
             [user]="user"
             [isEdit]="isEdit"
-            [submitCb]="save()"
+            [submitCb]="submit()"
         >
             <user-default-controls
+                (save)="save()"
                 (edit)="edit()"
                 (remove)="remove()"
                 [isEdit]="isEdit"
+                [isLoading]="userForm.isLoading || isRemoving"
                 class="user__controls"
-                [isLoading]="userForm.isLoading"
             ></user-default-controls>
         </user>
     `,
 })
 export class UserDefaultComponent {
-    isEdit = false;
     @Input() user!: UserT;
+    isEdit = false;
+    isRemoving = false;
+    request: string = 'save';
 
     constructor(private apiService: ApiService) {}
-
-    save() {
+    submit() {
         return async () => {
-            await this.apiService.put(this.user);
+            if (this.request === 'save') {
+                await this.apiService.put(this.user);
+            } else {
+                await this.apiService.deleteUser(this.user.id);
+            }
             this.toggleEdit();
         };
     }
 
-    async remove() {
-        await this.apiService.deleteUser(this.user.id);
+    save() {
+        this.request = 'save';
+    }
+
+    remove() {
+        this.request = 'remove';
     }
 
     toggleEdit() {

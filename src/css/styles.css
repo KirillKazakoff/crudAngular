@@ -277,7 +277,3 @@ body {
     text-align: center;
     min-height: 35px;
 }
-
-.loader--hidden {
-    display: none;
-}
