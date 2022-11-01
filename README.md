@@ -22,7 +22,7 @@
 
 </br>
 
-[![Build status](https://ci.appveyor.com/api/projects/status/vqbp5bvicyqgwt0x?svg=true)](https://ci.appveyor.com/project/KirillKazakoff/crudangular)
+[![Build status](https://ci.appveyor.com/api/projects/status/btoxgmcqnipjd0e1/branch/master?svg=true)](https://ci.appveyor.com/project/KirillKazakoff/crudcopy/branch/master)
 
 
 ## Задачи
