@@ -10,14 +10,14 @@ import { ApiService } from '../../services/api/api.service';
             class="user"
             [user]="user"
             [isEdit]="isEdit"
-            (submitCb)="save()"
+            [submitCb]="save()"
         >
             <user-default-controls
                 (edit)="edit()"
                 (remove)="remove()"
                 [isEdit]="isEdit"
                 class="user__controls"
-                [id]="user.id"
+                [isLoading]="userForm.isLoading"
             ></user-default-controls>
         </user>
     `,
@@ -28,9 +28,11 @@ export class UserDefaultComponent {
 
     constructor(private apiService: ApiService) {}
 
-    async save() {
-        await this.apiService.put(this.user);
-        this.toggleEdit();
+    save() {
+        return async () => {
+            await this.apiService.put(this.user);
+            this.toggleEdit();
+        };
     }
 
     async remove() {

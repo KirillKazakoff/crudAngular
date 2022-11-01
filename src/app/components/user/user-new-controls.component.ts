@@ -5,13 +5,9 @@ import {
 @Component({
     selector: 'user-new-controls',
     template: `
-        <btn-loader
-            #loader
-            [class.loader--hidden]="!loader.isLoading"
-            [id]="id"
-        ></btn-loader>
+        <btn-loader [class.loader--hidden]="!isLoading"></btn-loader>
 
-        <ng-container *ngIf="!loader.isLoading">
+        <ng-container *ngIf="!isLoading">
             <btn-save></btn-save>
             <btn-remove (remove)="remove.emit()"></btn-remove>
         </ng-container>
@@ -19,5 +15,6 @@ import {
 })
 export class UserNewControlsComponent {
     @Input() id: string = '';
+    @Input() isLoading: boolean | null = false;
     @Output() remove = new EventEmitter();
 }

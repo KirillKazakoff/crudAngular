@@ -1,13 +1,6 @@
-import {
-    Component,
-    Input,
-    Output,
-    ViewChild,
-    EventEmitter,
-    ChangeDetectorRef,
-} from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserFormT, UserT, UserEmptyT } from 'src/app/types.type';
+import { UserT, UserEmptyT } from 'src/app/types.type';
 import { emailPattern } from './utils/emailPattern';
 
 @Component({
@@ -83,21 +76,22 @@ export class UserComponent {
     @ViewChild('formUser') formUser!: NgForm;
     @Input() user!: UserT | UserEmptyT;
     @Input() isEdit = true;
-    @Output() submitCb = new EventEmitter();
-    formModel!: UserFormT;
-    emailPattern = emailPattern;
+    @Input() submitCb!: any;
 
-    constructor(private changeRef: ChangeDetectorRef) {}
-    onSubmit() {
-        this.changeRef.markForCheck();
-        this.form.markAllAsTouched();
-        if (this.form.valid) {
-            this.form.markAsUntouched();
-            this.submitCb.emit();
-        }
-    }
+    emailPattern = emailPattern;
+    isLoading = false;
 
     get form() {
         return this.formUser.form;
+    }
+
+    async onSubmit() {
+        this.isLoading = true;
+        this.form.markAllAsTouched();
+        if (this.form.valid) {
+            this.form.markAsUntouched();
+            await this.submitCb();
+        }
+        this.isLoading = false;
     }
 }

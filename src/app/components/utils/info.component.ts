@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { errors$ } from 'src/app/services/api/subjectsRx/errors';
+import { errors$ } from 'src/app/services/api/errors';
 
 @Component({
     selector: 'info',

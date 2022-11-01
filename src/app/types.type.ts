@@ -1,5 +1,3 @@
-import { FormControl, FormGroup } from '@angular/forms';
-
 // UserType
 export type UserT = {
     firstname: string;
@@ -18,16 +16,6 @@ export type UserEmptyT = {
     gender: string;
     id: string;
 };
-
-export type UserControlsT = {
-    firstname: FormControl<string>;
-    lastname: FormControl<string>;
-};
-
-export type UserFormT = FormGroup<{
-    firstname: FormControl<string>;
-    lastname: FormControl<string>;
-}>;
 
 // RequestType
 export type RequestObj = {

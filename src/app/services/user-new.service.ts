@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { nanoid } from 'nanoid';
 import { BehaviorSubject } from 'rxjs';
-import { UserEmptyT, UserT, UserFormT } from '../types.type';
+import { UserEmptyT, UserT } from '../types.type';
 import { ApiService } from './api/api.service';
 
 @Injectable({
@@ -11,7 +11,6 @@ export class UserNewService {
     constructor(private apiService: ApiService) {
         this.initUser();
     }
-    userForm!: UserFormT;
     user!: UserEmptyT;
     private isActive$ = new BehaviorSubject<boolean>(false);
 

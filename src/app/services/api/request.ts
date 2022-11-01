@@ -1,6 +1,5 @@
 import { RequestObj } from '../../types.type';
-import { errors$, connectionError } from './subjectsRx/errors';
-import { fetchStatus$ } from './subjectsRx/fetchStatus';
+import { errors$, connectionError } from './errors';
 
 const baseUrl = 'http://localhost:3000/user';
 
@@ -22,19 +21,15 @@ export const request = async (reqObj?: RequestObj) => {
     };
 
     try {
-        fetchStatus$.next({ status: 'loading', id: reqObj?.id });
-        await timeoutMock(500);
+        await timeoutMock(1000);
 
         const res = await fetch(url, settings);
         if (!res.ok) throw new Error(res.statusText);
 
         const resData = await res.json();
         if (resData.error) throw new Error(resData.error);
-
-        fetchStatus$.next({ status: 'loaded', id: reqObj?.id });
         return resData;
     } catch (e) {
-        fetchStatus$.next({ status: 'failed', id: reqObj?.id });
         errors$.next(connectionError);
         throw new Error(e as string);
     }
