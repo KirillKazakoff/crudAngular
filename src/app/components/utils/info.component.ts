@@ -4,20 +4,22 @@ import { errors$ } from 'src/app/services/api/errors';
 @Component({
     selector: 'info',
     template: `
-        <div class="info-wrapper" [class.info-hidden]="!isActive">
+        <div class="info__wrapper" [class.info--hidden]="!isActive">
             <div class="info">
-                <header class="info-header info-header-error">
+                <header class="info__header info__header--error">
                     <img src="assets/svg/exclamation.svg" />
                 </header>
-                <div class="info-content">
-                    <span class="info-content-title info-content-title-error">
+                <div class="info__content">
+                    <span
+                        class="info__content-title info__content-title--error"
+                    >
                         {{ title }}
                     </span>
-                    <span class="info-content-desc">{{ desc }}</span>
+                    <span class="info__content-desc">{{ desc }}</span>
                 </div>
-                <footer class="info-footer">
+                <footer class="info__footer">
                     <button
-                        class="btn btn-info"
+                        class="btn info__btn"
                         type="button"
                         (click)="toggle()"
                     >
@@ -29,8 +31,8 @@ import { errors$ } from 'src/app/services/api/errors';
     `,
 })
 export class InfoComponent implements OnInit {
-    title!: string;
-    desc!: string;
+    title: string = 'default title';
+    desc: string = 'default description';
     isActive = false;
 
     toggle() {

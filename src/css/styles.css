@@ -179,7 +179,7 @@ body {
 }
 
 /* info */
-.info-wrapper {
+.info__wrapper {
     background: rgba(50, 50, 50, 0.5);
     position: absolute;
     left: 0;
@@ -202,62 +202,62 @@ body {
     display: block;
 }
 
-.info-header {
+.info__header {
     background-color: pink;
     padding: 40px;
     border-bottom: 1px dashed var(--secondary);
     height: 115px;
 }
 
-.info-header-note {
+.info__header--note {
     background-color: var(--info);
 }
 
-.info-header-error {
+.info__header--error {
     background-color: var(--error);
 }
 
-.info-content {
+.info__content {
     color: var(--red);
     padding: 40px 30px 20px 40px;
     border-bottom: 1px dashed var(--secondary);
     line-height: 25px;
 }
 
-.info-content-title {
+.info__content-title {
     display: block;
     font-size: 34px;
     margin-bottom: 25px;
     line-height: 35px;
 }
 
-.info-content-desc {
+.info__content-desc {
     white-space: pre-line;
     line-height: 40px;
     font-size: 24px;
     display: block;
 }
 
-.info-content-title-note {
+.info__content-title--note {
     font-weight: 300;
 }
 
-.info-content-title-error {
+.info__content-title--error {
     font-weight: 500;
 }
 
-.info-footer {
+.info__footer {
     min-height: 110px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.info-hidden {
+.info--hidden {
     display: none;
 }
 
-.btn-info {
+.info__btn {
     font-size: 30px;
     font-weight: 500;
     color: var(--red);
@@ -265,7 +265,7 @@ body {
     padding: 10px 65px;
 }
 
-.btn-info:hover {
+.info__btn:hover {
     background-color: transparent;
     border: 1px solid red;
     color: red;
