@@ -5,11 +5,11 @@ import {
 @Component({
     selector: 'user-default-controls',
     template: `
-        <btn-remove *ngIf="!isLoading" (remove)="remove.emit()"></btn-remove>
         <btn-loader *ngIf="isLoading"></btn-loader>
 
         <btn-edit *ngIf="!isEdit && !isLoading" (edit)="edit.emit()"></btn-edit>
         <btn-save *ngIf="isEdit && !isLoading" (save)="save.emit()"></btn-save>
+        <btn-remove *ngIf="!isLoading" (remove)="remove.emit()"></btn-remove>
     `,
 })
 export class UserDefaultControlsComponent {

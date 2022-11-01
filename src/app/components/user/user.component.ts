@@ -86,13 +86,15 @@ export class UserComponent {
     }
 
     async onSubmit() {
-        this.isLoading = true;
-        this.form.markAllAsTouched();
-
-        if (!this.form.invalid) {
-            this.form.markAsUntouched();
-            await this.submitCb();
+        try {
+            this.isLoading = true;
+            this.form.markAllAsTouched();
+            if (!this.form.invalid) {
+                this.form.markAsUntouched();
+                await this.submitCb();
+            }
+        } finally {
+            this.isLoading = false;
         }
-        this.isLoading = false;
     }
 }
