@@ -1,5 +1,5 @@
 import { RequestObj } from '../../types.type';
-import { errors$, connectionError } from './errors';
+import { errors$ } from './errors';
 
 const baseUrl = 'http://localhost:3000/user';
 
@@ -21,7 +21,7 @@ export const request = async (reqObj?: RequestObj) => {
     };
 
     try {
-        await timeoutMock(600);
+        await timeoutMock(500);
 
         const res = await fetch(url, settings);
         if (!res.ok) throw new Error(res.statusText);
@@ -29,8 +29,9 @@ export const request = async (reqObj?: RequestObj) => {
         const resData = await res.json();
         if (resData.error) throw new Error(resData.error);
         return resData;
-    } catch (e) {
-        errors$.next(connectionError);
-        throw new Error(e as string);
+    } catch (e: any) {
+        const error = e.message as string;
+        errors$.next(error);
+        throw new Error(error);
     }
 };

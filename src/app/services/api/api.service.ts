@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserT } from '../../types.type';
+import { FetchStatusT, UserT } from '../../types.type';
 import { initialDb } from '../../init';
 import { request } from './request';
 
@@ -12,6 +12,7 @@ import { request } from './request';
 export class ApiService {
     users: UserT[] = [];
     private users$ = new BehaviorSubject<UserT[]>([]);
+    private _usersStatus$ = new BehaviorSubject<FetchStatusT>('idle');
 
     constructor() {
         this.users$.subscribe((data) => {
@@ -19,10 +20,21 @@ export class ApiService {
         });
     }
 
+    get usersStatus$() {
+        return this._usersStatus$.asObservable();
+    }
+
     async getUsers() {
-        const res = await request();
-        this.users$.next(res);
-        return this.users$;
+        try {
+            this._usersStatus$.next('loading');
+            const res = await request();
+
+            this.users$.next(res);
+            this._usersStatus$.next('loaded');
+        } catch (e) {
+            this._usersStatus$.next('failed');
+        }
+        return this.users$.asObservable();
     }
 
     async post(user: UserT) {

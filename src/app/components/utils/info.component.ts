@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { errors$ } from 'src/app/services/api/errors';
+import { InfoT } from 'src/app/types.type';
+import { errorObs$ } from '../../services/api/errors';
 
 @Component({
     selector: 'info',
@@ -40,8 +41,9 @@ export class InfoComponent implements OnInit {
     }
 
     ngOnInit() {
-        errors$.subscribe((error) => {
+        errorObs$.subscribe((error: InfoT) => {
             if (!error) return;
+
             this.desc = error.desc;
             this.title = error.title;
             this.toggle();

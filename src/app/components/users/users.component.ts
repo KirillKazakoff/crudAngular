@@ -3,14 +3,13 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
 import { UserNewService } from 'src/app/services/user-new.service';
 import { UserT } from 'src/app/types.type';
+import { FetchStatusT } from '../../types.type';
 
 @Component({
     selector: 'users',
     template: `
-        <ng-template #loader>
-            <users-loader></users-loader>
-        </ng-template>
-        <div class="users__wrapper" *ngIf="!isUsersLoading; else loader">
+        <users-loader [status]="status"></users-loader>
+        <div class="users__wrapper" *ngIf="status === 'loaded'">
             <div class="users">
                 <users-header></users-header>
                 <user-default
@@ -38,7 +37,7 @@ export class UsersComponent implements OnInit {
     users$!: Observable<UserT[]>;
     isActiveForm$ = this.userNewService.isActive;
     isActiveForm = false;
-    isUsersLoading = true;
+    status: FetchStatusT = 'idle';
 
     showForm() {
         this.userNewService.toggleActive();
@@ -48,10 +47,12 @@ export class UsersComponent implements OnInit {
         // (unlock to refresh users on initial value)
         // await this.apiService.refresh();
 
-        this.users$ = await this.apiService.getUsers();
-        this.isUsersLoading = false;
+        this.apiService.usersStatus$.subscribe((value) => {
+            this.status = value;
+        });
         this.isActiveForm$.subscribe((value) => {
             this.isActiveForm = value;
         });
+        this.users$ = await this.apiService.getUsers();
     }
 }
