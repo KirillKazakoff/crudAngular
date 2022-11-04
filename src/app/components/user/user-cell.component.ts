@@ -20,6 +20,7 @@ export class UserCellComponent implements DoCheck {
     @Input() value!: number | string | null;
     msg: string = '';
     isInvalid: boolean | null = true;
+    isActive = false;
     // private _isInvalid!: boolean | null;
 
     ngDoCheck() {

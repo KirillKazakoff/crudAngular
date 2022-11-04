@@ -1,4 +1,10 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    Input,
+    OnChanges,
+    ViewChild,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserT, UserEmptyT } from 'src/app/types.type';
 import { emailPattern } from './utils/emailPattern';
@@ -15,6 +21,7 @@ import { emailPattern } from './utils/emailPattern';
         >
             <user-cell class="user__cell" [model]="firstname">
                 <input
+                    #firstRef
                     #firstname="ngModel"
                     name="firstname"
                     [(ngModel)]="user.firstname"
@@ -72,8 +79,9 @@ import { emailPattern } from './utils/emailPattern';
         </form>
     `,
 })
-export class UserComponent {
+export class UserComponent implements OnChanges {
     @ViewChild('formUser') formUser!: NgForm;
+    @ViewChild('firstRef') firstname!: ElementRef<HTMLInputElement>;
     @Input() user!: UserT | UserEmptyT;
     @Input() isEdit = true;
     @Input() submitCb!: any;
@@ -83,6 +91,12 @@ export class UserComponent {
 
     get form() {
         return this.formUser.form;
+    }
+
+    ngOnChanges({ isEdit }: any) {
+        if (!this.firstname) return;
+        if (!isEdit?.currentValue) return;
+        setTimeout(() => this.firstname.nativeElement.focus());
     }
 
     async onSubmit() {

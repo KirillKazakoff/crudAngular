@@ -98,7 +98,6 @@ body {
 }
 
 .user__cell {
-    padding: 30px var(--cell-padding);
     display: flex;
     align-items: center;
     flex: 2;
@@ -121,7 +120,16 @@ body {
 }
 
 .user__cell-controls {
-    display: block;
+    display: flex;
+    align-items: center;
+}
+
+/* .controls */
+.user__controls {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* validation */
@@ -145,15 +153,16 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    outline: 1px solid red;
+    outline: 2px solid red;
     pointer-events: none;
 }
 
-/* .controls */
-.user__controls {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+input {
+    padding: 30px var(--cell-padding);
+}
+
+input:focus {
+    outline: 2px solid royalblue;
 }
 
 .btn-delete:hover {

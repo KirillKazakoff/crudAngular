@@ -17,7 +17,3 @@ export const errors: ErrorsT = {
 };
 
 export const errorObs$ = errors$.pipe(map((errorMsg) => errors[errorMsg]));
-
-// export const getError = (message: string) => {
-//     return errors[message];
-// };
