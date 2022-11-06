@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-restricted-syntax */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { FetchStatusT, UserT } from '../../types.type';
@@ -78,12 +77,8 @@ export class ApiService {
 
     async refresh() {
         await this.getUsers();
-        for await (const user of this.users) {
-            this.deleteUser(user.id);
-        }
 
-        for await (const user of initialDb) {
-            this.post(user);
-        }
+        this.users.forEach((user) => this.deleteUser(user.id));
+        initialDb.forEach((user) => this.post(user));
     }
 }
