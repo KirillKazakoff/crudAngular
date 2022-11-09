@@ -4,13 +4,7 @@ import { UserNewService } from '../../services/user-new.service';
 @Component({
     selector: 'user-new',
     template: `
-        <user
-            #userForm
-            class="user-new"
-            [user]="user"
-            [isEdit]="true"
-            [submitCb]="addUser()"
-        >
+        <user #userForm class="user-new" [user]="user" [submitCb]="addUser()">
             <user-new-controls
                 (remove)="removeForm()"
                 class="user__controls"
