@@ -92,6 +92,7 @@ import { emailPattern } from './utils/emailPattern';
                     Female
                 </label>
             </user-cell>
+
             <div class="user__cell user__cell-controls">
                 <ng-content></ng-content>
             </div>
