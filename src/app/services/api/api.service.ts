@@ -57,6 +57,7 @@ export class ApiService {
             },
             id: user.id,
         });
+
         const replacedIndex = this.users.indexOf(user);
         this.users.splice(replacedIndex, 1);
         this.users.splice(replacedIndex, 0, user);

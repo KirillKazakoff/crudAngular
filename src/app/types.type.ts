@@ -30,5 +30,8 @@ export type InfoT = {
     desc: string;
 } | null;
 
+// GenderType
+export type GenderT = 'male' | 'female';
+
 // FetchStatusType
 export type FetchStatusT = 'idle' | 'loading' | 'loaded' | 'failed';

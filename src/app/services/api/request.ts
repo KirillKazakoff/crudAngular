@@ -21,7 +21,7 @@ export const request = async (reqObj?: RequestObj) => {
     };
 
     try {
-        await timeoutMock(500);
+        // await timeoutMock(500);
 
         const res = await fetch(url, settings);
         if (!res.ok) throw new Error(res.statusText);

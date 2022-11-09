@@ -6,7 +6,7 @@ import { validationMessages } from './utils/validationMessages';
 @Component({
     selector: 'user-cell',
     template: `
-        <div [class.is-invalid]="isInvalid">
+        <div class="display-contents" [class.is-invalid]="isInvalid">
             <div [hidden]="!isInvalid" [class.input-tip]="isInvalid">
                 {{ msg }}
             </div>

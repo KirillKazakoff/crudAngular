@@ -21,6 +21,18 @@ body {
     cursor: pointer;
 }
 
+.display-contents {
+    display: contents;
+}
+
+input {
+    padding: 30px var(--cell-padding);
+}
+
+input:focus {
+    outline: 2px solid royalblue;
+}
+
 /* users*/
 .users__wrapper {
     display: flex;
@@ -105,6 +117,18 @@ body {
     position: relative;
 }
 
+.form-check-input:focus {
+    padding: inherit;
+    outline: none;
+    appearance: initial;
+    -webkit-appearance: radio;
+}
+
+.user__cell-gender {
+    justify-content: space-around;
+    flex: 1;
+}
+
 .user__cell:last-child {
     border: none;
 }
@@ -155,14 +179,6 @@ body {
     bottom: 0;
     outline: 2px solid red;
     pointer-events: none;
-}
-
-input {
-    padding: 30px var(--cell-padding);
-}
-
-input:focus {
-    outline: 2px solid royalblue;
 }
 
 .btn-delete:hover {
@@ -283,4 +299,12 @@ input:focus {
     display: flex;
     text-align: center;
     min-height: 35px;
+}
+
+.user__cell-gender:focus-within {
+    outline: 2px solid royalblue;
+}
+
+.user__cell-controls:focus-within {
+    outline: none;
 }

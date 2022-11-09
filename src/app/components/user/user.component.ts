@@ -63,15 +63,34 @@ import { emailPattern } from './utils/emailPattern';
                     type="number"
                 />
             </user-cell>
+
             <user-cell class="user__cell user__cell-gender" [model]="gender">
-                <input
-                    #gender="ngModel"
-                    [(ngModel)]="user.gender"
-                    name="gender"
-                    placeholder="Insert gender"
-                    required
-                    [disabled]="!isEdit"
-                />
+                <label>
+                    <input
+                        #gender="ngModel"
+                        required
+                        type="radio"
+                        [(ngModel)]="user.gender"
+                        name="gender"
+                        class="form-check-input"
+                        value="male"
+                        [disabled]="!isEdit"
+                    />
+                    Male
+                </label>
+                <label>
+                    <input
+                        #gender="ngModel"
+                        required
+                        type="radio"
+                        [(ngModel)]="user.gender"
+                        name="gender"
+                        class="form-check-input"
+                        value="female"
+                        [disabled]="!isEdit"
+                    />
+                    Female
+                </label>
             </user-cell>
             <div class="user__cell user__cell-controls">
                 <ng-content></ng-content>

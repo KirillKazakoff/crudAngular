@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
 
     async ngOnInit() {
         // (unlock to refresh users on initial value)
-        await this.apiService.refresh();
+        // await this.apiService.refresh();
 
         this.apiService.usersStatus$.subscribe((value) => {
             this.status = value;

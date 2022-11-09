@@ -17,5 +17,6 @@ export const validationMessages: MessagesT = {
     },
     gender: {
         required: 'Введите пол',
+        wrongGender: 'Пол ...',
     },
 };
