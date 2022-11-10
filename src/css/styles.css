@@ -25,6 +25,10 @@ body {
     display: contents;
 }
 
+input {
+    padding: 30px 0;
+}
+
 /* users*/
 .users__wrapper {
     display: flex;
@@ -102,7 +106,7 @@ body {
 }
 
 .user__cell {
-    padding: 30px var(--cell-padding);
+    padding: 0 var(--cell-padding);
     display: flex;
     align-items: center;
     flex: 2;
